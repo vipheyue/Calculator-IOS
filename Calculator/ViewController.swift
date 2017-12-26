@@ -23,6 +23,9 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         cv.dataSource = self
         cv.delegate = self
         
+        
+        
+        
 //        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"PropertyList" ofType:@"plist"];
 //        self.dataMutDic = [[NSMutableDictionary alloc] initWithContentsOfFile:plistPath][@"ventilator"];
 //        var plistPath:NSString =
