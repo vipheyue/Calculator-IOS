@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		040C87DE1FF2568C00CCBCC2 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040C87DD1FF2568C00CCBCC2 /* Data.plist */; };
+		041BC9AC1FF34CB2009016FE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BC9AA1FF34CB2009016FE /* TableViewCell.swift */; };
+		041BC9AD1FF34CB2009016FE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041BC9AB1FF34CB2009016FE /* TableViewCell.xib */; };
+		041BC9B41FF379AB009016FE /* XCalculateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BC9B31FF379AB009016FE /* XCalculateString.swift */; };
 		045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */; };
 		045722D41FEFA9FE00E9EA7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D31FEFA9FE00E9EA7A /* ViewController.swift */; };
 		045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045722D51FEFA9FE00E9EA7A /* Main.storyboard */; };
@@ -37,6 +40,9 @@
 
 /* Begin PBXFileReference section */
 		040C87DD1FF2568C00CCBCC2 /* Data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
+		041BC9AA1FF34CB2009016FE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		041BC9AB1FF34CB2009016FE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		041BC9B31FF379AB009016FE /* XCalculateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCalculateString.swift; sourceTree = "<group>"; };
 		045722CE1FEFA9FE00E9EA7A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045722D31FEFA9FE00E9EA7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +84,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041BC9AE1FF37724009016FE /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				041BC9B31FF379AB009016FE /* XCalculateString.swift */,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		041BC9AF1FF37801009016FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				045722D31FEFA9FE00E9EA7A /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		041BC9B01FF37867009016FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				045722FF1FEFC4CE00E9EA7A /* CollectionViewCell.swift */,
+				041BC9AA1FF34CB2009016FE /* TableViewCell.swift */,
+				041BC9AB1FF34CB2009016FE /* TableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		045722C51FEFA9FE00E9EA7A = {
 			isa = PBXGroup;
 			children = (
@@ -101,13 +133,14 @@
 		045722D01FEFA9FE00E9EA7A /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				041BC9B01FF37867009016FE /* View */,
+				041BC9AF1FF37801009016FE /* Controller */,
+				041BC9AE1FF37724009016FE /* Widget */,
 				045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */,
-				045722D31FEFA9FE00E9EA7A /* ViewController.swift */,
 				045722D51FEFA9FE00E9EA7A /* Main.storyboard */,
 				045722D81FEFA9FE00E9EA7A /* Assets.xcassets */,
 				045722DA1FEFA9FE00E9EA7A /* LaunchScreen.storyboard */,
 				045722DD1FEFA9FE00E9EA7A /* Info.plist */,
-				045722FF1FEFC4CE00E9EA7A /* CollectionViewCell.swift */,
 				040C87DD1FF2568C00CCBCC2 /* Data.plist */,
 			);
 			path = Calculator;
@@ -239,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045722DC1FEFA9FE00E9EA7A /* LaunchScreen.storyboard in Resources */,
+				041BC9AD1FF34CB2009016FE /* TableViewCell.xib in Resources */,
 				045722D91FEFA9FE00E9EA7A /* Assets.xcassets in Resources */,
 				040C87DE1FF2568C00CCBCC2 /* Data.plist in Resources */,
 				045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */,
@@ -267,6 +301,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				045722D41FEFA9FE00E9EA7A /* ViewController.swift in Sources */,
+				041BC9B41FF379AB009016FE /* XCalculateString.swift in Sources */,
+				041BC9AC1FF34CB2009016FE /* TableViewCell.swift in Sources */,
 				045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */,
 				045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */,
 			);

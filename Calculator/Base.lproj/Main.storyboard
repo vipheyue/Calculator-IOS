@@ -41,7 +41,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ioh-M9-o9u">
                                                     <rect key="frame" x="76.5" y="72.5" width="0.0" height="0.0"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -62,17 +62,44 @@
                                     <outlet property="delegate" destination="SZt-jt-Ikx" id="6WW-YA-nLg"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWT-Om-I8E">
+                                <rect key="frame" x="0.0" y="324.5" width="375" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5GO-fR-Sva"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uJX-fO-Khb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="304.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SZt-jt-Ikx" id="NcJ-Vs-pBp"/>
+                                    <outlet property="delegate" destination="SZt-jt-Ikx" id="l5L-gy-HsJ"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="uJX-fO-Khb" firstAttribute="leading" secondItem="ElK-no-1a5" secondAttribute="leading" id="7cd-vk-RcA"/>
                             <constraint firstItem="ElK-no-1a5" firstAttribute="bottom" secondItem="C78-j9-GhR" secondAttribute="bottom" id="Ks4-uY-jEq"/>
+                            <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="uJX-fO-Khb" secondAttribute="trailing" id="PUJ-Ie-aUT"/>
+                            <constraint firstItem="iWT-Om-I8E" firstAttribute="top" secondItem="uJX-fO-Khb" secondAttribute="bottom" id="V8E-BC-ogk"/>
                             <constraint firstItem="C78-j9-GhR" firstAttribute="leading" secondItem="ElK-no-1a5" secondAttribute="leading" id="fTw-4P-NWY"/>
+                            <constraint firstItem="C78-j9-GhR" firstAttribute="top" secondItem="iWT-Om-I8E" secondAttribute="bottom" id="gqR-bE-nJm"/>
+                            <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="iWT-Om-I8E" secondAttribute="trailing" id="mil-sh-bs7"/>
                             <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="C78-j9-GhR" secondAttribute="trailing" id="o6y-g3-fSn"/>
+                            <constraint firstItem="uJX-fO-Khb" firstAttribute="top" secondItem="ElK-no-1a5" secondAttribute="top" id="qhc-5W-167"/>
+                            <constraint firstItem="iWT-Om-I8E" firstAttribute="leading" secondItem="ElK-no-1a5" secondAttribute="leading" id="wqK-XZ-2gd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ElK-no-1a5"/>
                     </view>
                     <connections>
-                        <outlet property="cv" destination="C78-j9-GhR" id="sTo-70-E3h"/>
+                        <outlet property="collectionView" destination="C78-j9-GhR" id="sTo-70-E3h"/>
+                        <outlet property="showLabel" destination="iWT-Om-I8E" id="wtx-s9-RoZ"/>
+                        <outlet property="tabelView" destination="uJX-fO-Khb" id="GG0-ku-pbE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D6X-Dq-gz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
