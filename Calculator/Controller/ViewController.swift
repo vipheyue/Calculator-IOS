@@ -28,15 +28,12 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         tabelView.dataSource = self
         tabelView.delegate = self
         
-//        tabelView!.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         let nib:UINib = UINib(nibName:"TableViewCell", bundle: Bundle.main)
         tabelView.register(nib, forCellReuseIdentifier: "TableViewCell")
         
         let diaryList:String = Bundle.main.path(forResource: "Data", ofType:"plist")!
         let data:NSDictionary = NSDictionary(contentsOfFile:diaryList)!
         dataArray = data.object(forKey: "DataArray") as? NSArray
-        
-        print(dataArray ?? "null")
     }
 
     // collectionView
@@ -57,9 +54,17 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(dataArray![indexPath.row])
-        if isCalc || indexPath.row == 0 {
+        if isCalc {
             isCalc = false
             showLabel.text = ""
+        }
+        if !isCalc && indexPath.row == 0  {
+            if showLabel.text?.count == 1 || showLabel.text?.count == 0 {
+                showLabel.text = ""
+            }
+            else {
+                showLabel.text?.removeLast()
+            }
         }
         if indexPath.row != 0 && indexPath.row != (dataArray?.count)!-1 {
             showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])"

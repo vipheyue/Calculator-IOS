@@ -113,7 +113,7 @@ class XCalculateString: NSObject {
         let left:NSString = str.substring(with: NSMakeRange(0, lRange.location)) as NSString
         let right:NSString = str.substring(from: rRange.location+1) as NSString
         // 括号内的表达式
-        let middle:NSString = str .substring(with: NSMakeRange(lRange.location+1, rRange.location-lRange.location-1)) as NSString
+        let middle:NSString = str.substring(with: NSMakeRange(lRange.location+1, rRange.location-lRange.location-1)) as NSString
         // 代入计算新的公式
         let newStr:NSString = "\(left)\(self.calcMultiplyDivision(str: middle))\(right)" as NSString
         return self.calcComplexStr(str:newStr)
@@ -126,8 +126,9 @@ class XCalculateString: NSObject {
         for tempStr in String(format:"%@", str).characters {
             tempMutArray.insert(tempStr, at: 0)
         }
+        
         for tempStr in tempMutArray {
-            if ((tempStr as! NSString).integerValue < 0 || (tempStr as! NSString).integerValue > 9) && (tempStr as! NSString) != "."
+            if ((String(describing: tempStr) as NSString).integerValue < 0 || (String(describing: tempStr) as NSString).integerValue > 9) && (String(describing: tempStr) as NSString) != "."
             {
                 let i = str.range(of: tempStr as! String).location
                 numStartPoint = i + 1
@@ -141,7 +142,7 @@ class XCalculateString: NSObject {
     private func getFirstStr(str:NSString) -> NSString {
         var numStartPoint:NSInteger = 0
         for tempStr in (str as String).characters {
-            if ((tempStr as! NSString).integerValue < 0 || (tempStr as! NSString).integerValue > 9) && (tempStr as! NSString) != "."
+            if ((String(describing: tempStr) as NSString).integerValue < 0 || (String(describing: tempStr) as NSString).integerValue > 9) && (String(describing: tempStr) as NSString) != "."
             {
                 let i = str.range(of: String(tempStr)).location
                 numStartPoint = i
