@@ -17,6 +17,9 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     let inset:CGFloat = 1.0
     var dataArray:NSArray?
     var isCalc:Bool = false
+    var historyData:NSMutableArray = NSMutableArray.init()
+    let historyPlistPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/HistoryData.plist"
+
     
     
     override func viewDidLoad() {
@@ -34,6 +37,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         let diaryList:String = Bundle.main.path(forResource: "Data", ofType:"plist")!
         let data:NSDictionary = NSDictionary(contentsOfFile:diaryList)!
         dataArray = data.object(forKey: "DataArray") as? NSArray
+        
+        if NSMutableArray(contentsOfFile: historyPlistPath) != nil
+        {
+            self.historyData = NSMutableArray(contentsOfFile: historyPlistPath)!
+        }
     }
 
     // collectionView
@@ -53,7 +61,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(dataArray![indexPath.row])
+        // 删除
         if isCalc {
             isCalc = false
             showLabel.text = ""
@@ -66,12 +74,19 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
                 showLabel.text?.removeLast()
             }
         }
+        // 记录数字键
         if indexPath.row != 0 && indexPath.row != (dataArray?.count)!-1 {
             showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])"
         }
+        // 运算结果
         if indexPath.row == (dataArray?.count)!-1 {
             showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])\(XCalculateString().calcComplexStr(str:showLabel.text! as NSString))"
             isCalc = true
+            // 保存历史数据
+            self.historyData.add(showLabel.text!)
+            self.historyData.write(toFile: historyPlistPath, atomically: true)
+            print(self.historyData)
+            self.tabelView.reloadData()
         }
     }
     
@@ -97,17 +112,17 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     
     // tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.historyData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:TableViewCell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
-        cell.recordLabel.text = "1+1=3"
+        cell.recordLabel.text = self.historyData[indexPath.row] as? String
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40;
+        return 30;
     }
 }
 
