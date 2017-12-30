@@ -33,9 +33,9 @@ class XCalculateString: NSObject {
         var symbol:NSString = "+"
         let len:NSInteger = str.length
         var numStartPoint:NSInteger = 0
+        var i = 0
         for tempStr in String(format:"%@", str).characters
         {
-            let i = str.range(of: String(tempStr)).location
             if (tempStr == "+" || tempStr == "-") {
                 let num:NSString = str.substring(with: NSMakeRange(numStartPoint, i-numStartPoint)) as NSString
                 switch (symbol) {
@@ -51,6 +51,7 @@ class XCalculateString: NSObject {
                 symbol = String(tempStr) as NSString
                 numStartPoint = i + 1
             }
+            i = i + 1
         }
         if (numStartPoint < len) {
             let num:NSString = str.substring(with: NSMakeRange(numStartPoint, len-numStartPoint)) as NSString
@@ -126,14 +127,14 @@ class XCalculateString: NSObject {
         for tempStr in String(format:"%@", str).characters {
             tempMutArray.insert(tempStr, at: 0)
         }
-        
+        var i = 0
         for tempStr in tempMutArray {
             if ((String(describing: tempStr) as NSString).integerValue < 0 || (String(describing: tempStr) as NSString).integerValue > 9) && (String(describing: tempStr) as NSString) != "."
             {
-                let i = str.range(of: tempStr as! String).location
                 numStartPoint = i + 1
                 break
             }
+            i = i + 1
         }
         return str.substring(from: numStartPoint) as NSString
     }
@@ -141,13 +142,14 @@ class XCalculateString: NSObject {
     // 获取字符串中的前置数字
     private func getFirstStr(str:NSString) -> NSString {
         var numStartPoint:NSInteger = 0
+        var i = 0
         for tempStr in (str as String).characters {
             if ((String(describing: tempStr) as NSString).integerValue < 0 || (String(describing: tempStr) as NSString).integerValue > 9) && (String(describing: tempStr) as NSString) != "."
             {
-                let i = str.range(of: String(tempStr)).location
                 numStartPoint = i
                 break
             }
+            i = i + 1
         }
         return str.substring(from: numStartPoint) as NSString
     }

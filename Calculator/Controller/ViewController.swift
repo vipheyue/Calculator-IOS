@@ -15,8 +15,10 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     @IBOutlet weak var showLabel: UILabel!
     
     let inset:CGFloat = 1.0
+    let heightCell:CGFloat = 30
+    
     var dataArray:NSArray?
-    var isCalc:Bool = false
+    var isCalc:Bool = true
     var historyData:NSMutableArray = NSMutableArray.init()
     let historyPlistPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/HistoryData.plist"
 
@@ -62,7 +64,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // 删除
-        if isCalc {
+        if isCalc || ((showLabel.text?.range(of: "=")) != nil){
             isCalc = false
             showLabel.text = ""
         }
@@ -118,11 +120,15 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:TableViewCell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
         cell.recordLabel.text = self.historyData[indexPath.row] as? String
+        if isCalc {
+            isCalc = false
+            self.tabelView.scrollToRow(at: NSIndexPath.init(row: self.historyData.count-1, section: 0) as IndexPath, at: UITableViewScrollPosition.top, animated: true)
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 30;
+        return heightCell;
     }
 }
 
