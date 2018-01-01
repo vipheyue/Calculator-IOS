@@ -15,7 +15,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     @IBOutlet weak var showLabel: UILabel!
     
     let inset:CGFloat = 1.0
-    let heightCell:CGFloat = 30
+    let heightCell:CGFloat = 26
     
     var dataArray:NSArray?
     var isCalc:Bool = true
@@ -27,6 +27,8 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -55,8 +57,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell:CollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        if indexPath.row == 0 {
+            cell.label.font = UIFont.systemFont(ofSize: 20)
+        }
         if indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18 {
-            cell.backgroundColor = UIColor.orange
+            cell.backgroundColor = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
         }
         cell.label.text = dataArray?[indexPath.row] as? String
         return cell
@@ -82,7 +87,23 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         }
         // 运算结果
         if indexPath.row == (dataArray?.count)!-1 {
-            showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])\(XCalculateString().calcComplexStr(str:showLabel.text! as NSString))"
+            var calcComplexStr:String = XCalculateString().calcComplexStr(str:showLabel.text! as NSString) as String
+            var isWhile:Bool = true
+            while(isWhile)
+            {
+                if calcComplexStr.last == "0"
+                {
+                    calcComplexStr.removeLast()
+                }
+                else {
+                    isWhile = false
+                    if calcComplexStr.last == "."
+                    {
+                        calcComplexStr.removeLast()
+                    }
+                }
+            }
+            showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])\(calcComplexStr)"
             isCalc = true
             // 保存历史数据
             self.historyData.add(showLabel.text!)
