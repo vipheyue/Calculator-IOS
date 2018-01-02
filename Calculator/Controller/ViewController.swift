@@ -97,11 +97,17 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
             let allRight:Bool = MSExpressionHelper.helperCheckExpression(showLabel.text, using: nil)
             if(allRight){
                 //计算表达式
-                calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
+                do {
+                    try calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
+                }
+                catch {
+                    XMessageView.messageShow("输入的表达式不对哦!")
+                    return
+                }
                 print(calcComplexStr,showLabel.text!)
                 //表达式转JS表达式
-                let jsExpression:NSString = MSParser.parserJSExpression(fromExpression: showLabel.text, error: nil)! as NSString
-                print(jsExpression)
+//                let jsExpression:NSString = MSParser.parserJSExpression(fromExpression: showLabel.text, error: nil)! as NSString
+//                print(jsExpression)
             }
             else {
                 XMessageView.messageShow("输入的表达式不对哦!")
