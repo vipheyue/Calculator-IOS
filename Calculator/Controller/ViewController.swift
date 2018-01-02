@@ -72,12 +72,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         // 连续计算
         if ((showLabel.text?.range(of: "=")) != nil) && (indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18) {
             isCalc = false
-            if indexPath.row != 18 {
-                showLabel.text = "\(calcComplexStr)\(dataArray![indexPath.row])"
-            }
-            else {
-                showLabel.text = calcComplexStr
-            }
+            showLabel.text = calcComplexStr
         }
         // 删除
         if ((showLabel.text?.range(of: "=")) != nil){
