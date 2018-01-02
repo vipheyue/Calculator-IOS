@@ -8,9 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		040C87DE1FF2568C00CCBCC2 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040C87DD1FF2568C00CCBCC2 /* Data.plist */; };
+		040D76E61FFBBEF700A5823F /* XMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040D76E51FFBBEF700A5823F /* XMessageView.m */; };
 		041BC9AC1FF34CB2009016FE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BC9AA1FF34CB2009016FE /* TableViewCell.swift */; };
 		041BC9AD1FF34CB2009016FE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041BC9AB1FF34CB2009016FE /* TableViewCell.xib */; };
 		041BC9B41FF379AB009016FE /* XCalculateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BC9B31FF379AB009016FE /* XCalculateString.swift */; };
+		041EC3C11FFA9128008962C1 /* MSElementTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3A11FFA9128008962C1 /* MSElementTable.m */; };
+		041EC3C21FFA9128008962C1 /* MSParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3A31FFA9128008962C1 /* MSParser.m */; };
+		041EC3C31FFA9128008962C1 /* MSScaner.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3A51FFA9128008962C1 /* MSScaner.m */; };
+		041EC3C41FFA9128008962C1 /* MSStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3A71FFA9128008962C1 /* MSStack.m */; };
+		041EC3C51FFA9128008962C1 /* NSError+MSExpression.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3A91FFA9128008962C1 /* NSError+MSExpression.m */; };
+		041EC3C61FFA9128008962C1 /* MSExpressionHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3AC1FFA9128008962C1 /* MSExpressionHelper.m */; };
+		041EC3C71FFA9128008962C1 /* MSConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3B01FFA9128008962C1 /* MSConstant.m */; };
+		041EC3C81FFA9128008962C1 /* MSElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3B21FFA9128008962C1 /* MSElement.m */; };
+		041EC3C91FFA9128008962C1 /* MSFunctionOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3B41FFA9128008962C1 /* MSFunctionOperator.m */; };
+		041EC3CA1FFA9128008962C1 /* MSNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3B61FFA9128008962C1 /* MSNumber.m */; };
+		041EC3CB1FFA9128008962C1 /* MSNumberGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3B81FFA9128008962C1 /* MSNumberGroup.m */; };
+		041EC3CC1FFA9128008962C1 /* MSOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3BA1FFA9128008962C1 /* MSOperator.m */; };
+		041EC3CD1FFA9128008962C1 /* MSPairOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3BC1FFA9128008962C1 /* MSPairOperator.m */; };
+		041EC3CE1FFA9128008962C1 /* MSValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3BE1FFA9128008962C1 /* MSValue.m */; };
+		041EC3CF1FFA9128008962C1 /* MSValueOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3C01FFA9128008962C1 /* MSValueOperator.m */; };
 		045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */; };
 		045722D41FEFA9FE00E9EA7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D31FEFA9FE00E9EA7A /* ViewController.swift */; };
 		045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045722D51FEFA9FE00E9EA7A /* Main.storyboard */; };
@@ -40,9 +56,43 @@
 
 /* Begin PBXFileReference section */
 		040C87DD1FF2568C00CCBCC2 /* Data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
+		040D76E41FFBBEF700A5823F /* XMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMessageView.h; sourceTree = "<group>"; };
+		040D76E51FFBBEF700A5823F /* XMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMessageView.m; sourceTree = "<group>"; };
 		041BC9AA1FF34CB2009016FE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		041BC9AB1FF34CB2009016FE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		041BC9B31FF379AB009016FE /* XCalculateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCalculateString.swift; sourceTree = "<group>"; };
+		041EC3A01FFA9128008962C1 /* MSElementTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSElementTable.h; sourceTree = "<group>"; };
+		041EC3A11FFA9128008962C1 /* MSElementTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSElementTable.m; sourceTree = "<group>"; };
+		041EC3A21FFA9128008962C1 /* MSParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSParser.h; sourceTree = "<group>"; };
+		041EC3A31FFA9128008962C1 /* MSParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSParser.m; sourceTree = "<group>"; };
+		041EC3A41FFA9128008962C1 /* MSScaner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSScaner.h; sourceTree = "<group>"; };
+		041EC3A51FFA9128008962C1 /* MSScaner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSScaner.m; sourceTree = "<group>"; };
+		041EC3A61FFA9128008962C1 /* MSStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSStack.h; sourceTree = "<group>"; };
+		041EC3A71FFA9128008962C1 /* MSStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSStack.m; sourceTree = "<group>"; };
+		041EC3A81FFA9128008962C1 /* NSError+MSExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+MSExpression.h"; sourceTree = "<group>"; };
+		041EC3A91FFA9128008962C1 /* NSError+MSExpression.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+MSExpression.m"; sourceTree = "<group>"; };
+		041EC3AB1FFA9128008962C1 /* MSExpressionHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSExpressionHelper.h; sourceTree = "<group>"; };
+		041EC3AC1FFA9128008962C1 /* MSExpressionHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSExpressionHelper.m; sourceTree = "<group>"; };
+		041EC3AD1FFA9128008962C1 /* MathStringExpression.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MathStringExpression.h; sourceTree = "<group>"; };
+		041EC3AF1FFA9128008962C1 /* MSConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSConstant.h; sourceTree = "<group>"; };
+		041EC3B01FFA9128008962C1 /* MSConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSConstant.m; sourceTree = "<group>"; };
+		041EC3B11FFA9128008962C1 /* MSElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSElement.h; sourceTree = "<group>"; };
+		041EC3B21FFA9128008962C1 /* MSElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSElement.m; sourceTree = "<group>"; };
+		041EC3B31FFA9128008962C1 /* MSFunctionOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSFunctionOperator.h; sourceTree = "<group>"; };
+		041EC3B41FFA9128008962C1 /* MSFunctionOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSFunctionOperator.m; sourceTree = "<group>"; };
+		041EC3B51FFA9128008962C1 /* MSNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNumber.h; sourceTree = "<group>"; };
+		041EC3B61FFA9128008962C1 /* MSNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNumber.m; sourceTree = "<group>"; };
+		041EC3B71FFA9128008962C1 /* MSNumberGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSNumberGroup.h; sourceTree = "<group>"; };
+		041EC3B81FFA9128008962C1 /* MSNumberGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSNumberGroup.m; sourceTree = "<group>"; };
+		041EC3B91FFA9128008962C1 /* MSOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSOperator.h; sourceTree = "<group>"; };
+		041EC3BA1FFA9128008962C1 /* MSOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSOperator.m; sourceTree = "<group>"; };
+		041EC3BB1FFA9128008962C1 /* MSPairOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSPairOperator.h; sourceTree = "<group>"; };
+		041EC3BC1FFA9128008962C1 /* MSPairOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSPairOperator.m; sourceTree = "<group>"; };
+		041EC3BD1FFA9128008962C1 /* MSValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSValue.h; sourceTree = "<group>"; };
+		041EC3BE1FFA9128008962C1 /* MSValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSValue.m; sourceTree = "<group>"; };
+		041EC3BF1FFA9128008962C1 /* MSValueOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSValueOperator.h; sourceTree = "<group>"; };
+		041EC3C01FFA9128008962C1 /* MSValueOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSValueOperator.m; sourceTree = "<group>"; };
+		041EC3D31FFA925C008962C1 /* Calculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		045722CE1FEFA9FE00E9EA7A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045722D31FEFA9FE00E9EA7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +160,78 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		041EC39D1FFA9101008962C1 /* WidgetOC */ = {
+			isa = PBXGroup;
+			children = (
+				040D76E41FFBBEF700A5823F /* XMessageView.h */,
+				040D76E51FFBBEF700A5823F /* XMessageView.m */,
+				041EC39E1FFA9128008962C1 /* MathStringExpression */,
+			);
+			path = WidgetOC;
+			sourceTree = "<group>";
+		};
+		041EC39E1FFA9128008962C1 /* MathStringExpression */ = {
+			isa = PBXGroup;
+			children = (
+				041EC3AD1FFA9128008962C1 /* MathStringExpression.h */,
+				041EC39F1FFA9128008962C1 /* ExpressionParser */,
+				041EC3AA1FFA9128008962C1 /* Helper */,
+				041EC3AE1FFA9128008962C1 /* Operator */,
+			);
+			path = MathStringExpression;
+			sourceTree = "<group>";
+		};
+		041EC39F1FFA9128008962C1 /* ExpressionParser */ = {
+			isa = PBXGroup;
+			children = (
+				041EC3A01FFA9128008962C1 /* MSElementTable.h */,
+				041EC3A11FFA9128008962C1 /* MSElementTable.m */,
+				041EC3A21FFA9128008962C1 /* MSParser.h */,
+				041EC3A31FFA9128008962C1 /* MSParser.m */,
+				041EC3A41FFA9128008962C1 /* MSScaner.h */,
+				041EC3A51FFA9128008962C1 /* MSScaner.m */,
+				041EC3A61FFA9128008962C1 /* MSStack.h */,
+				041EC3A71FFA9128008962C1 /* MSStack.m */,
+				041EC3A81FFA9128008962C1 /* NSError+MSExpression.h */,
+				041EC3A91FFA9128008962C1 /* NSError+MSExpression.m */,
+			);
+			path = ExpressionParser;
+			sourceTree = "<group>";
+		};
+		041EC3AA1FFA9128008962C1 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				041EC3AB1FFA9128008962C1 /* MSExpressionHelper.h */,
+				041EC3AC1FFA9128008962C1 /* MSExpressionHelper.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		041EC3AE1FFA9128008962C1 /* Operator */ = {
+			isa = PBXGroup;
+			children = (
+				041EC3AF1FFA9128008962C1 /* MSConstant.h */,
+				041EC3B01FFA9128008962C1 /* MSConstant.m */,
+				041EC3B11FFA9128008962C1 /* MSElement.h */,
+				041EC3B21FFA9128008962C1 /* MSElement.m */,
+				041EC3B31FFA9128008962C1 /* MSFunctionOperator.h */,
+				041EC3B41FFA9128008962C1 /* MSFunctionOperator.m */,
+				041EC3B51FFA9128008962C1 /* MSNumber.h */,
+				041EC3B61FFA9128008962C1 /* MSNumber.m */,
+				041EC3B71FFA9128008962C1 /* MSNumberGroup.h */,
+				041EC3B81FFA9128008962C1 /* MSNumberGroup.m */,
+				041EC3B91FFA9128008962C1 /* MSOperator.h */,
+				041EC3BA1FFA9128008962C1 /* MSOperator.m */,
+				041EC3BB1FFA9128008962C1 /* MSPairOperator.h */,
+				041EC3BC1FFA9128008962C1 /* MSPairOperator.m */,
+				041EC3BD1FFA9128008962C1 /* MSValue.h */,
+				041EC3BE1FFA9128008962C1 /* MSValue.m */,
+				041EC3BF1FFA9128008962C1 /* MSValueOperator.h */,
+				041EC3C01FFA9128008962C1 /* MSValueOperator.m */,
+			);
+			path = Operator;
+			sourceTree = "<group>";
+		};
 		045722C51FEFA9FE00E9EA7A = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +255,7 @@
 		045722D01FEFA9FE00E9EA7A /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				041EC39D1FFA9101008962C1 /* WidgetOC */,
 				041BC9B01FF37867009016FE /* View */,
 				041BC9AF1FF37801009016FE /* Controller */,
 				041BC9AE1FF37724009016FE /* Widget */,
@@ -142,6 +265,7 @@
 				045722DA1FEFA9FE00E9EA7A /* LaunchScreen.storyboard */,
 				045722DD1FEFA9FE00E9EA7A /* Info.plist */,
 				040C87DD1FF2568C00CCBCC2 /* Data.plist */,
+				041EC3D31FFA925C008962C1 /* Calculator-Bridging-Header.h */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -300,11 +424,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				041EC3CB1FFA9128008962C1 /* MSNumberGroup.m in Sources */,
+				041EC3CA1FFA9128008962C1 /* MSNumber.m in Sources */,
 				045722D41FEFA9FE00E9EA7A /* ViewController.swift in Sources */,
+				041EC3CC1FFA9128008962C1 /* MSOperator.m in Sources */,
+				041EC3C71FFA9128008962C1 /* MSConstant.m in Sources */,
+				040D76E61FFBBEF700A5823F /* XMessageView.m in Sources */,
+				041EC3C81FFA9128008962C1 /* MSElement.m in Sources */,
+				041EC3C31FFA9128008962C1 /* MSScaner.m in Sources */,
+				041EC3C21FFA9128008962C1 /* MSParser.m in Sources */,
 				041BC9B41FF379AB009016FE /* XCalculateString.swift in Sources */,
+				041EC3CE1FFA9128008962C1 /* MSValue.m in Sources */,
 				041BC9AC1FF34CB2009016FE /* TableViewCell.swift in Sources */,
+				041EC3C51FFA9128008962C1 /* NSError+MSExpression.m in Sources */,
 				045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */,
+				041EC3C61FFA9128008962C1 /* MSExpressionHelper.m in Sources */,
 				045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */,
+				041EC3C41FFA9128008962C1 /* MSStack.m in Sources */,
+				041EC3CD1FFA9128008962C1 /* MSPairOperator.m in Sources */,
+				041EC3CF1FFA9128008962C1 /* MSValueOperator.m in Sources */,
+				041EC3C11FFA9128008962C1 /* MSElementTable.m in Sources */,
+				041EC3C91FFA9128008962C1 /* MSFunctionOperator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +617,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyt.new1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Calculator/Calculator-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -493,6 +634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.zyt.new1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Calculator/Calculator-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

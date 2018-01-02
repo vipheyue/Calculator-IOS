@@ -21,9 +21,9 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     var isCalc:Bool = true
     var historyData:NSMutableArray = NSMutableArray.init()
     let historyPlistPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/HistoryData.plist"
+    
+    var calcComplexStr:String = "0"
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,14 +62,25 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         }
         if indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18 {
             cell.backgroundColor = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
+            cell.label.textColor = UIColor.white
         }
         cell.label.text = dataArray?[indexPath.row] as? String
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // 连续计算
+        if ((showLabel.text?.range(of: "=")) != nil) && (indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18) {
+            isCalc = false
+            if indexPath.row != 18 {
+                showLabel.text = "\(calcComplexStr)\(dataArray![indexPath.row])"
+            }
+            else {
+                showLabel.text = calcComplexStr
+            }
+        }
         // 删除
-        if isCalc || ((showLabel.text?.range(of: "=")) != nil){
+        if ((showLabel.text?.range(of: "=")) != nil){
             isCalc = false
             showLabel.text = ""
         }
@@ -87,22 +98,38 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         }
         // 运算结果
         if indexPath.row == (dataArray?.count)!-1 {
-            var calcComplexStr:String = XCalculateString().calcComplexStr(str:showLabel.text! as NSString) as String
-            var isWhile:Bool = true
-            while(isWhile)
-            {
-                if calcComplexStr.last == "0"
-                {
-                    calcComplexStr.removeLast()
-                }
-                else {
-                    isWhile = false
-                    if calcComplexStr.last == "."
-                    {
-                        calcComplexStr.removeLast()
-                    }
-                }
+            
+            let allRight:Bool = MSExpressionHelper.helperCheckExpression(showLabel.text, using: nil)
+            if(allRight){
+                //计算表达式
+                calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
+                print(calcComplexStr,showLabel.text!)
+                //表达式转JS表达式
+                let jsExpression:NSString = MSParser.parserJSExpression(fromExpression: showLabel.text, error: nil)! as NSString
+                print(jsExpression)
             }
+            else {
+                XMessageView.messageShow("输入的表达式不对哦!")
+                return
+            }
+            
+//            var calcComplexStr:String = XCalculateString().calcComplexStr(str:showLabel.text! as NSString) as String
+//            var isWhile:Bool = true
+//            while(isWhile)
+//            {
+//                if calcComplexStr.last == "0"
+//                {
+//                    calcComplexStr.removeLast()
+//                }
+//                else {
+//                    isWhile = false
+//                    if calcComplexStr.last == "."
+//                    {
+//                        calcComplexStr.removeLast()
+//                    }
+//                }
+//            }
+            
             showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])\(calcComplexStr)"
             isCalc = true
             // 保存历史数据
