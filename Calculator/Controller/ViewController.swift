@@ -97,39 +97,14 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
             let allRight:Bool = MSExpressionHelper.helperCheckExpression(showLabel.text, using: nil)
             if(allRight){
                 //计算表达式
-                do {
-                    try calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
-                }
-                catch {
-                    XMessageView.messageShow("输入的表达式不对哦!")
-                    return
-                }
-                print(calcComplexStr,showLabel.text!)
-                //表达式转JS表达式
-//                let jsExpression:NSString = MSParser.parserJSExpression(fromExpression: showLabel.text, error: nil)! as NSString
-//                print(jsExpression)
+                calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
             }
             else {
                 XMessageView.messageShow("输入的表达式不对哦!")
                 return
             }
-            
-//            var calcComplexStr:String = XCalculateString().calcComplexStr(str:showLabel.text! as NSString) as String
-//            var isWhile:Bool = true
-//            while(isWhile)
-//            {
-//                if calcComplexStr.last == "0"
-//                {
-//                    calcComplexStr.removeLast()
-//                }
-//                else {
-//                    isWhile = false
-//                    if calcComplexStr.last == "."
-//                    {
-//                        calcComplexStr.removeLast()
-//                    }
-//                }
-//            }
+
+            print(calcComplexStr,showLabel.text!)
             
             showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])\(calcComplexStr)"
             isCalc = true

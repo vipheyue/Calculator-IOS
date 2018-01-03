@@ -355,7 +355,8 @@
     [self makeOperatorSystem:_positive];
     [_positive computeWithBlock:^id (NSArray *args) {
         if(args.count!=1 || ![MSNumber typeIsKindToObjects:args]) return nil;
-        return [args.firstObject msNumber];
+//        return [args.firstObject msNumber];
+        return @([args[0] doubleValue]);
     }];
     [self setElement:_positive];
     
