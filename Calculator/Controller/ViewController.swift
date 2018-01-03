@@ -47,6 +47,14 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
             self.historyData = NSMutableArray(contentsOfFile: historyPlistPath)!
         }
     }
+    
+    // 长按手势
+    @objc func handleLongpressGesture(sender : UILongPressGestureRecognizer){
+        if sender.state == UIGestureRecognizerState.began{
+            showLabel.text = ""
+            isCalc = false
+        }
+    }
 
     // collectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
@@ -59,6 +67,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         let cell:CollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
         if indexPath.row == 0 {
             cell.label.font = UIFont.systemFont(ofSize: 20)
+            // 添加长按手势
+            let longpressGesutre = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongpressGesture(sender:)))
+            longpressGesutre.minimumPressDuration = 1
+            longpressGesutre.numberOfTouchesRequired = 1
+            cell.addGestureRecognizer(longpressGesutre)
         }
         if indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18 {
             cell.backgroundColor = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
@@ -69,8 +82,11 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if ((showLabel.text?.range(of: "=")) != nil) && indexPath.row == 18{
+            return
+        }
         // 连续计算
-        if ((showLabel.text?.range(of: "=")) != nil) && (indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18) {
+        if ((showLabel.text?.range(of: "=")) != nil) && (indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15) {
             isCalc = false
             showLabel.text = calcComplexStr
         }
@@ -100,6 +116,7 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
                 calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
             }
             else {
+                isCalc = false
                 XMessageView.messageShow("输入的表达式不对哦!")
                 return
             }
