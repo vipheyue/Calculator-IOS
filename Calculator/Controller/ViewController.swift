@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 
 class ViewController: UIViewController, UICollectionViewDataSource,  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
 
@@ -46,6 +47,61 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
         {
             self.historyData = NSMutableArray(contentsOfFile: historyPlistPath)!
         }
+        
+        let myAppdelegate = UIApplication.shared.delegate as! AppDelegate
+        myAppdelegate.blockObject = {(param: String) in
+            print(param)
+            self.showLabel.text = self.getExpressionFromStr(str: param)
+            
+            let allRight:Bool = MSExpressionHelper.helperCheckExpression(self.showLabel.text, using: nil)
+            if(allRight){
+                //计算表达式
+                self.calcComplexStr = MSParser.parserComputeExpression(self.showLabel.text, error: nil)
+            }
+            else {
+                self.isCalc = false
+                XMessageView.messageShow("输入的表达式不对哦!")
+                return
+            }
+            
+            print(self.calcComplexStr,self.showLabel.text!)
+            
+            self.showLabel.text = "\(self.showLabel.text ?? "")=\(self.calcComplexStr)"
+            self.isCalc = true
+            // 保存历史数据
+            self.historyData.add(self.showLabel.text!)
+            self.historyData.write(toFile: self.historyPlistPath, atomically: true)
+            print(self.historyData)
+            self.tabelView.reloadData()
+        }
+    }
+    
+    // 获取剪切板中的表达式
+    func getExpressionFromStr(str:String) -> String {
+        var tempFirst:Int = -1
+        var tempLast:Int = 0
+        var tempCount:Int = 0
+        for tempStr in str.characters {
+            if tempFirst == -1 && (((String(describing: tempStr) as NSString).integerValue >= 0 && (String(describing: tempStr) as NSString).integerValue <= 9) || (String(describing: tempStr) as NSString) == "-" || (String(describing: tempStr) as NSString) == "(" || (String(describing: tempStr) as NSString) == "+")
+            {
+                tempFirst = tempCount
+                tempLast = tempCount
+            }
+            if tempFirst != -1 && !(((String(describing: tempStr) as NSString).integerValue >= 0 && (String(describing: tempStr) as NSString).integerValue <= 9) || (String(describing: tempStr) as NSString) == "-" || (String(describing: tempStr) as NSString) == "(" || (String(describing: tempStr) as NSString) == "+" || (String(describing: tempStr) as NSString) == "=" || (String(describing: tempStr) as NSString) == "*" || (String(describing: tempStr) as NSString) == "/" || (String(describing: tempStr) as NSString) == ")")
+            {
+                tempLast = tempCount - 1
+            }
+            if tempCount == str.count-1 && (((String(describing: tempStr) as NSString).integerValue >= 0 && (String(describing: tempStr) as NSString).integerValue <= 9) || (String(describing: tempStr) as NSString) == "-" || (String(describing: tempStr) as NSString) == "(" || (String(describing: tempStr) as NSString) == "+" || (String(describing: tempStr) as NSString) == "=" || (String(describing: tempStr) as NSString) == "*" || (String(describing: tempStr) as NSString) == "/" || (String(describing: tempStr) as NSString) == ")")
+            {
+                tempLast = tempCount
+            }
+            tempCount = tempCount + 1
+        }
+        print(str, tempLast, tempFirst)
+        if tempFirst != -1 {
+            return (String(describing: str) as NSString).substring(with: NSMakeRange(tempFirst, tempLast-tempFirst+1))
+        }
+        return ""
     }
     
     // 长按手势
@@ -82,6 +138,12 @@ class ViewController: UIViewController, UICollectionViewDataSource,  UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // 震动
+//        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        // 咚咚咚声音
+        AudioServicesPlaySystemSound(1106)
+        
         if ((showLabel.text?.range(of: "=")) != nil) && indexPath.row == 18{
             return
         }
