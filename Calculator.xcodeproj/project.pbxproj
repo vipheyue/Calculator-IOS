@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		040C87DE1FF2568C00CCBCC2 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040C87DD1FF2568C00CCBCC2 /* Data.plist */; };
 		040D76E61FFBBEF700A5823F /* XMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 040D76E51FFBBEF700A5823F /* XMessageView.m */; };
+		0415B798200B32670063EF25 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 0415B797200B32670063EF25 /* menu.png */; };
+		0415B79B200B352B0063EF25 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415B799200B352B0063EF25 /* MenuViewController.swift */; };
+		0415B79C200B352B0063EF25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0415B79A200B352B0063EF25 /* ViewController.swift */; };
 		041BC9AC1FF34CB2009016FE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BC9AA1FF34CB2009016FE /* TableViewCell.swift */; };
 		041BC9AD1FF34CB2009016FE /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041BC9AB1FF34CB2009016FE /* TableViewCell.xib */; };
 		041BC9B41FF379AB009016FE /* XCalculateString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041BC9B31FF379AB009016FE /* XCalculateString.swift */; };
@@ -28,13 +31,14 @@
 		041EC3CE1FFA9128008962C1 /* MSValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3BE1FFA9128008962C1 /* MSValue.m */; };
 		041EC3CF1FFA9128008962C1 /* MSValueOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3C01FFA9128008962C1 /* MSValueOperator.m */; };
 		045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */; };
-		045722D41FEFA9FE00E9EA7A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D31FEFA9FE00E9EA7A /* ViewController.swift */; };
 		045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045722D51FEFA9FE00E9EA7A /* Main.storyboard */; };
 		045722D91FEFA9FE00E9EA7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045722D81FEFA9FE00E9EA7A /* Assets.xcassets */; };
 		045722DC1FEFA9FE00E9EA7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045722DA1FEFA9FE00E9EA7A /* LaunchScreen.storyboard */; };
 		045722E71FEFA9FE00E9EA7A /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722E61FEFA9FE00E9EA7A /* CalculatorTests.swift */; };
 		045722F21FEFA9FE00E9EA7A /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722F11FEFA9FE00E9EA7A /* CalculatorUITests.swift */; };
 		045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722FF1FEFC4CE00E9EA7A /* CollectionViewCell.swift */; };
+		049EF407200F9B990076B6BE /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 049EF406200F9B990076B6BE /* share.png */; };
+		049EF409200FB31F0076B6BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EF408200FB31F0076B6BE /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +62,9 @@
 		040C87DD1FF2568C00CCBCC2 /* Data.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		040D76E41FFBBEF700A5823F /* XMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMessageView.h; sourceTree = "<group>"; };
 		040D76E51FFBBEF700A5823F /* XMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMessageView.m; sourceTree = "<group>"; };
+		0415B797200B32670063EF25 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
+		0415B799200B352B0063EF25 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0415B79A200B352B0063EF25 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		041BC9AA1FF34CB2009016FE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		041BC9AB1FF34CB2009016FE /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		041BC9B31FF379AB009016FE /* XCalculateString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCalculateString.swift; sourceTree = "<group>"; };
@@ -95,7 +102,6 @@
 		041EC3D31FFA925C008962C1 /* Calculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calculator-Bridging-Header.h"; sourceTree = "<group>"; };
 		045722CE1FEFA9FE00E9EA7A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		045722D31FEFA9FE00E9EA7A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		045722D61FEFA9FE00E9EA7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		045722D81FEFA9FE00E9EA7A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045722DB1FEFA9FE00E9EA7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,6 +113,8 @@
 		045722F11FEFA9FE00E9EA7A /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
 		045722F31FEFA9FE00E9EA7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045722FF1FEFC4CE00E9EA7A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		049EF406200F9B990076B6BE /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		049EF408200FB31F0076B6BE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +142,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0415B796200B32510063EF25 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				049EF406200F9B990076B6BE /* share.png */,
+				0415B797200B32670063EF25 /* menu.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		041BC9AE1FF37724009016FE /* Widget */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +162,9 @@
 		041BC9AF1FF37801009016FE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				045722D31FEFA9FE00E9EA7A /* ViewController.swift */,
+				0415B79A200B352B0063EF25 /* ViewController.swift */,
+				049EF408200FB31F0076B6BE /* MainViewController.swift */,
+				0415B799200B352B0063EF25 /* MenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -255,6 +274,7 @@
 		045722D01FEFA9FE00E9EA7A /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				0415B796200B32510063EF25 /* Images */,
 				041EC39D1FFA9101008962C1 /* WidgetOC */,
 				041BC9B01FF37867009016FE /* View */,
 				041BC9AF1FF37801009016FE /* Controller */,
@@ -395,8 +415,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0415B798200B32670063EF25 /* menu.png in Resources */,
 				045722DC1FEFA9FE00E9EA7A /* LaunchScreen.storyboard in Resources */,
 				041BC9AD1FF34CB2009016FE /* TableViewCell.xib in Resources */,
+				049EF407200F9B990076B6BE /* share.png in Resources */,
 				045722D91FEFA9FE00E9EA7A /* Assets.xcassets in Resources */,
 				040C87DE1FF2568C00CCBCC2 /* Data.plist in Resources */,
 				045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */,
@@ -425,12 +447,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				041EC3CB1FFA9128008962C1 /* MSNumberGroup.m in Sources */,
+				049EF409200FB31F0076B6BE /* MainViewController.swift in Sources */,
 				041EC3CA1FFA9128008962C1 /* MSNumber.m in Sources */,
-				045722D41FEFA9FE00E9EA7A /* ViewController.swift in Sources */,
 				041EC3CC1FFA9128008962C1 /* MSOperator.m in Sources */,
 				041EC3C71FFA9128008962C1 /* MSConstant.m in Sources */,
 				040D76E61FFBBEF700A5823F /* XMessageView.m in Sources */,
 				041EC3C81FFA9128008962C1 /* MSElement.m in Sources */,
+				0415B79C200B352B0063EF25 /* ViewController.swift in Sources */,
 				041EC3C31FFA9128008962C1 /* MSScaner.m in Sources */,
 				041EC3C21FFA9128008962C1 /* MSParser.m in Sources */,
 				041BC9B41FF379AB009016FE /* XCalculateString.swift in Sources */,
@@ -439,6 +462,7 @@
 				041EC3C51FFA9128008962C1 /* NSError+MSExpression.m in Sources */,
 				045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */,
 				041EC3C61FFA9128008962C1 /* MSExpressionHelper.m in Sources */,
+				0415B79B200B352B0063EF25 /* MenuViewController.swift in Sources */,
 				045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */,
 				041EC3C41FFA9128008962C1 /* MSStack.m in Sources */,
 				041EC3CD1FFA9128008962C1 /* MSPairOperator.m in Sources */,

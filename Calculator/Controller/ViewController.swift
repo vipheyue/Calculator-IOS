@@ -1,237 +1,263 @@
 //
 //  ViewController.swift
-//  Calculator
+//  hangge_1035
 //
-//  Created by YC X on 2017/12/24.
-//  Copyright © 2017年 YC X. All rights reserved.
+//  Created by hangge on 2017/12/12.
+//  Copyright © 2017年 hangge. All rights reserved.
 //
 
 import UIKit
-import AudioToolbox
 
-class ViewController: UIViewController, UICollectionViewDataSource,  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
-
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var tabelView: UITableView!
-    @IBOutlet weak var showLabel: UILabel!
+class ViewController: UIViewController {
     
-    let inset:CGFloat = 1.0
-    let heightCell:CGFloat = 26
+    // 屏幕的宽，高
+    let SCREEN_WIDTH = UIScreen.main.bounds.size.width
+    let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
     
-    var dataArray:NSArray?
-    var isCalc:Bool = true
-    var historyData:NSMutableArray = NSMutableArray.init()
-    let historyPlistPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/HistoryData.plist"
+    // 主页导航控制器
+    var mainNavigationController:UINavigationController!
     
-    var calcComplexStr:String = "0"
-
+    // 主页面控制器
+    var mainViewController:MainViewController!
+    
+    // 菜单页控制器
+    var menuViewController:MenuViewController?
+    
+    // 菜单页当前状态
+    var currentState = MenuState.Collapsed {
+        didSet {
+            //菜单展开的时候，给主页面边缘添加阴影
+            let shouldShowShadow = currentState != .Collapsed
+            showShadowForMainViewController(shouldShowShadow: shouldShowShadow)
+        }
+    }
+    
+    // 菜单打开后主页在屏幕右侧露出部分的宽度
+    let menuViewExpandedOffset: CGFloat = UIScreen.main.bounds.size.width/3
+    
+    // 侧滑开始时，菜单视图起始的偏移量
+    let menuViewStartOffset: CGFloat = 70
+    
+    // 侧滑菜单黑色半透明遮罩层
+    var blackCover: UIView?
+    
+    // 最小缩放比例
+    let minProportion: CGFloat = 0.95
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
-        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        tabelView.dataSource = self
-        tabelView.delegate = self
+        //状态栏文字改成白色
+        UIApplication.shared.statusBarStyle = .lightContent;
         
-        let nib:UINib = UINib(nibName:"TableViewCell", bundle: Bundle.main)
-        tabelView.register(nib, forCellReuseIdentifier: "TableViewCell")
+        // 给根容器设置背景
+        let imageView = UIImageView(image: UIImage(named: "back"))
+        imageView.frame = UIScreen.main.bounds
+        self.view.addSubview(imageView)
         
-        let diaryList:String = Bundle.main.path(forResource: "Data", ofType:"plist")!
-        let data:NSDictionary = NSDictionary(contentsOfFile:diaryList)!
-        dataArray = data.object(forKey: "DataArray") as? NSArray
+        //初始化主视图
+        mainNavigationController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(withIdentifier: "mainNavigaiton")
+            as! UINavigationController
+        view.addSubview(mainNavigationController.view)
         
-        if NSMutableArray(contentsOfFile: historyPlistPath) != nil
-        {
-            self.historyData = NSMutableArray(contentsOfFile: historyPlistPath)!
+        //指定Navigation Bar左侧按钮的事件
+        mainViewController = mainNavigationController.viewControllers.first
+            as! MainViewController
+        mainViewController.navigationItem.leftBarButtonItem?.action = #selector(showMenu)
+        
+        //添加拖动手势
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self,
+                                                          action: #selector(handlePanGesture(_:)))
+        mainNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+        
+        //单击收起菜单手势
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                          action: #selector(handleTapGesture))
+        mainNavigationController.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    //导航栏左侧按钮事件响应
+    @objc func showMenu() {
+        //如果菜单是展开的则会收起，否则就展开
+        if currentState == .Expanded {
+            animateMainView(shouldExpand: false)
+        }else {
+            addMenuViewController()
+            animateMainView(shouldExpand: true)
         }
+    }
+    
+    //拖动手势响应
+    @objc func handlePanGesture(_ recognizer: UIPanGestureRecognizer) {
         
-        let myAppdelegate = UIApplication.shared.delegate as! AppDelegate
-        myAppdelegate.blockObject = {(param: String) in
-            print(param)
-            self.showLabel.text = self.getExpressionFromStr(str: param)
+        switch(recognizer.state) {
+        // 刚刚开始滑动
+        case .began:
+            // 判断拖动方向
+            let dragFromLeftToRight = (recognizer.velocity(in: view).x > 0)
+            // 如果刚刚开始滑动的时候还处于主页面，从左向右滑动加入侧面菜单
+            if (currentState == .Collapsed && dragFromLeftToRight) {
+                currentState = .Expanding
+                addMenuViewController()
+            }
             
-            let allRight:Bool = MSExpressionHelper.helperCheckExpression(self.showLabel.text, using: nil)
-            if(allRight){
-                //计算表达式
-                self.calcComplexStr = MSParser.parserComputeExpression(self.showLabel.text, error: nil)
-            }
-            else {
-                self.isCalc = false
-                XMessageView.messageShow("输入的表达式不对哦!")
-                return
-            }
+        // 如果是正在滑动，则偏移主视图的坐标实现跟随手指位置移动
+        case .changed:
+            let screenWidth = view.bounds.size.width
+            var centerX = recognizer.view!.center.x +
+                recognizer.translation(in: view).x
+            //页面滑到最左侧的话就不许要继续往左移动
+            if centerX < screenWidth/2 { centerX = screenWidth/2 }
             
-            print(self.calcComplexStr,self.showLabel.text!)
+            // 计算缩放比例
+            let percent:CGFloat = (centerX - screenWidth/2) /
+                (view.bounds.size.width - menuViewExpandedOffset)
+            var proportion:CGFloat = (centerX - screenWidth/2) /
+                (view.bounds.size.width - menuViewExpandedOffset)
+            proportion = 1 - (1 - minProportion) * proportion
             
-            self.showLabel.text = "\(self.showLabel.text ?? "")=\(self.calcComplexStr)"
-            self.isCalc = true
-            // 保存历史数据
-            self.historyData.add(self.showLabel.text!)
-            self.historyData.write(toFile: self.historyPlistPath, atomically: true)
-            print(self.historyData)
-            self.tabelView.reloadData()
-        }
-    }
-    
-    // 获取剪切板中的表达式
-    func getExpressionFromStr(str:String) -> String {
-        var tempFirst:Int = -1
-        var tempLast:Int = 0
-        var tempCount:Int = 0
-        for tempStr in str.characters {
-            if tempFirst == -1 && (((String(describing: tempStr) as NSString).integerValue >= 0 && (String(describing: tempStr) as NSString).integerValue <= 9) || (String(describing: tempStr) as NSString) == "-" || (String(describing: tempStr) as NSString) == "(" || (String(describing: tempStr) as NSString) == "+")
-            {
-                tempFirst = tempCount
-                tempLast = tempCount
-            }
-            if tempFirst != -1 && !(((String(describing: tempStr) as NSString).integerValue >= 0 && (String(describing: tempStr) as NSString).integerValue <= 9) || (String(describing: tempStr) as NSString) == "-" || (String(describing: tempStr) as NSString) == "(" || (String(describing: tempStr) as NSString) == "+" || (String(describing: tempStr) as NSString) == "=" || (String(describing: tempStr) as NSString) == "*" || (String(describing: tempStr) as NSString) == "/" || (String(describing: tempStr) as NSString) == ")")
-            {
-                tempLast = tempCount - 1
-            }
-            if tempCount == str.count-1 && (((String(describing: tempStr) as NSString).integerValue >= 0 && (String(describing: tempStr) as NSString).integerValue <= 9) || (String(describing: tempStr) as NSString) == "-" || (String(describing: tempStr) as NSString) == "(" || (String(describing: tempStr) as NSString) == "+" || (String(describing: tempStr) as NSString) == "=" || (String(describing: tempStr) as NSString) == "*" || (String(describing: tempStr) as NSString) == "/" || (String(describing: tempStr) as NSString) == ")")
-            {
-                tempLast = tempCount
-            }
-            tempCount = tempCount + 1
-        }
-        print(str, tempLast, tempFirst)
-        if tempFirst != -1 {
-            return (String(describing: str) as NSString).substring(with: NSMakeRange(tempFirst, tempLast-tempFirst+1))
-        }
-        return ""
-    }
-    
-    // 长按手势
-    @objc func handleLongpressGesture(sender : UILongPressGestureRecognizer){
-        if sender.state == UIGestureRecognizerState.began{
-            showLabel.text = ""
-            isCalc = false
-        }
-    }
-
-    // collectionView
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
-        return (dataArray?.count)!
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
-        let cell:CollectionViewCell  = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
-        if indexPath.row == 0 {
-            cell.label.font = UIFont.systemFont(ofSize: 20)
-            // 添加长按手势
-            let longpressGesutre = UILongPressGestureRecognizer(target: self, action: #selector(self.handleLongpressGesture(sender:)))
-            longpressGesutre.minimumPressDuration = 1
-            longpressGesutre.numberOfTouchesRequired = 1
-            cell.addGestureRecognizer(longpressGesutre)
-        }
-        if indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18 {
-            cell.backgroundColor = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
-            cell.label.textColor = UIColor.white
-        }
-        cell.label.text = dataArray?[indexPath.row] as? String
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        // 震动
-//        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        // 咚咚咚声音
-        AudioServicesPlaySystemSound(1106)
-        
-        if ((showLabel.text?.range(of: "=")) != nil) && indexPath.row == 18{
-            return
-        }
-        // 连续计算
-        if ((showLabel.text?.range(of: "=")) != nil) && (indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15) {
-            isCalc = false
-            showLabel.text = calcComplexStr
-        }
-        // 删除
-        if ((showLabel.text?.range(of: "=")) != nil){
-            isCalc = false
-            showLabel.text = ""
-        }
-        if !isCalc && indexPath.row == 0  {
-            if showLabel.text?.count == 1 || showLabel.text?.count == 0 {
-                showLabel.text = ""
-            }
-            else {
-                showLabel.text?.removeLast()
-            }
-        }
-        // 记录数字键
-        if indexPath.row != 0 && indexPath.row != (dataArray?.count)!-1 {
-            showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])"
-        }
-        // 运算结果
-        if indexPath.row == (dataArray?.count)!-1 {
+            // 执行视差特效
+            blackCover?.alpha = (proportion - minProportion) / (1 - minProportion)
             
-            let allRight:Bool = MSExpressionHelper.helperCheckExpression(showLabel.text, using: nil)
-            if(allRight){
-                //计算表达式
-                calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
-            }
-            else {
-                isCalc = false
-                XMessageView.messageShow("输入的表达式不对哦!")
-                return
-            }
-
-            print(calcComplexStr,showLabel.text!)
+            //主页面滑到最左侧的话就不许要继续往左移动
+            recognizer.view!.center.x = centerX
+            recognizer.setTranslation(.zero, in: view)
+            //缩放主页面
+            recognizer.view!.transform = CGAffineTransform.identity
+                .scaledBy(x: proportion, y: proportion)
             
-            showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])\(calcComplexStr)"
-            isCalc = true
-            // 保存历史数据
-            self.historyData.add(showLabel.text!)
-            self.historyData.write(toFile: historyPlistPath, atomically: true)
-            print(self.historyData)
-            self.tabelView.reloadData()
+            //菜单视图移动
+            menuViewController?.view.center.x = screenWidth/2 -
+                menuViewStartOffset * (1 - percent)
+            //菜单视图缩放
+            let menuProportion = (1 + minProportion) - proportion
+            menuViewController?.view.transform = CGAffineTransform.identity
+                .scaledBy(x: menuProportion, y: menuProportion)
+            
+        // 如果滑动结束
+        case .ended:
+            //根据页面滑动是否过半，判断后面是自动展开还是收缩
+            let hasMovedhanHalfway = recognizer.view!.center.x > view.bounds.size.width
+            animateMainView(shouldExpand: hasMovedhanHalfway)
+        default:
+            break
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth:CGFloat = self.view.frame.size.width
-        if indexPath.row == 16 {
-            return CGSize(width: cellWidth/2-1, height: cellWidth/4.0/1.5)
+    //单击手势响应
+    @objc func handleTapGesture() {
+        //如果菜单是展开的点击主页部分则会收起
+        if currentState == .Expanded {
+            animateMainView(shouldExpand: false)
         }
-        return CGSize(width: (cellWidth-5)/4, height: cellWidth/4.0/1.5)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: inset, left: inset/2, bottom: inset, right: inset/2)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return inset
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return inset
-    }
-    
-    // tableview
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.historyData.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:TableViewCell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
-        cell.recordLabel.text = self.historyData[indexPath.row] as? String
-        if isCalc {
-            isCalc = false
-            self.tabelView.scrollToRow(at: NSIndexPath.init(row: self.historyData.count-1, section: 0) as IndexPath, at: UITableViewScrollPosition.top, animated: true)
+    // 添加菜单页
+    func addMenuViewController() {
+        if (menuViewController == nil) {
+            menuViewController = UIStoryboard(name: "Main", bundle: nil)
+                .instantiateViewController(withIdentifier: "menuView")
+                as? MenuViewController
+            
+            //菜单页先缩小
+            menuViewController!.view.center.x = view.bounds.size.width/2
+                * (1-(1-minProportion)/2) - menuViewStartOffset
+            menuViewController!.view.transform = CGAffineTransform.identity
+                .scaledBy(x: minProportion, y: minProportion)
+            
+            // 插入当前视图
+            view.insertSubview(menuViewController!.view,
+                               belowSubview: mainNavigationController.view)
+            
+            // 建立父子关系
+            addChildViewController(menuViewController!)
+            menuViewController!.didMove(toParentViewController: self)
+            
+            // 在侧滑菜单之上增加黑色遮罩层，目的是实现视差特效
+            blackCover = UIView(frame: self.view.frame.offsetBy(dx: 0, dy: 0))
+            blackCover!.backgroundColor = UIColor.black
+            self.view.insertSubview(blackCover!,
+                                    belowSubview: mainNavigationController.view)
         }
-        return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return heightCell;
+    //主页自动展开、收起动画
+    func animateMainView(shouldExpand: Bool) {
+        // 如果是用来展开
+        if (shouldExpand) {
+            // 更新当前状态
+            currentState = .Expanded
+            // 动画
+            let mainPosition = view.bounds.size.width * (1+minProportion/2)
+                - menuViewExpandedOffset
+            doTheAnimate(mainPosition: mainPosition, mainProportion: minProportion,
+                         menuPosition: view.bounds.size.width/2, menuProportion: 1,
+                         blackCoverAlpha: 0)
+        }
+            // 如果是用于隐藏
+        else {
+            // 动画
+            let menuPosition = view.bounds.size.width/2 * (1-(1-minProportion)/2)
+                - menuViewStartOffset
+            doTheAnimate(mainPosition: view.bounds.size.width/2, mainProportion: 1,
+                         menuPosition: menuPosition, menuProportion: minProportion,
+                         blackCoverAlpha: 1) {
+                finished in
+                // 动画结束之后更新状态
+                self.currentState = .Collapsed
+                // 移除左侧视图
+                self.menuViewController?.view.removeFromSuperview()
+                // 释放内存
+                self.menuViewController = nil;
+                // 移除黑色遮罩层
+                self.blackCover?.removeFromSuperview()
+                // 释放内存
+                self.blackCover = nil;
+            }
+        }
+    }
+    
+    //主页移动动画、黑色遮罩层动画
+    func doTheAnimate(mainPosition: CGFloat, mainProportion: CGFloat,
+                      menuPosition: CGFloat, menuProportion: CGFloat,
+                      blackCoverAlpha: CGFloat, completion: ((Bool) -> Void)! = nil) {
+        //usingSpringWithDamping：1.0表示没有弹簧震动动画
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1.0,
+               initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                self.mainNavigationController.view.center.x = mainPosition
+                self.blackCover?.alpha = blackCoverAlpha
+                // 缩放主页面
+                self.mainNavigationController.view.transform =
+                    CGAffineTransform.identity.scaledBy(x: mainProportion, y: mainProportion)
+                
+                // 菜单页移动
+                self.menuViewController?.view.center.x = menuPosition
+                // 菜单页缩放
+                self.menuViewController?.view.transform =
+                    CGAffineTransform.identity.scaledBy(x: menuProportion, y: menuProportion)
+        }, completion: completion)
+    }
+    
+    //给主页面边缘添加、取消阴影
+    func showShadowForMainViewController(shouldShowShadow: Bool) {
+        if (shouldShowShadow) {
+            mainNavigationController.view.layer.shadowOpacity = 0.8
+        } else {
+            mainNavigationController.view.layer.shadowOpacity = 0.0
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }
+
+// 菜单状态枚举
+enum MenuState {
+    case Collapsed  // 未显示(收起)
+    case Expanding   // 展开中
+    case Expanded   // 展开
+}
+
 
