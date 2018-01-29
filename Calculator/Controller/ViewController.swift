@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UIGestureRecognizerDelegate {
     
     // 屏幕的宽，高
     let SCREEN_WIDTH = UIScreen.main.bounds.size.width
@@ -69,12 +69,22 @@ class ViewController: UIViewController {
         //添加拖动手势
         let panGestureRecognizer = UIPanGestureRecognizer(target: self,
                                                           action: #selector(handlePanGesture(_:)))
+        
         mainNavigationController.view.addGestureRecognizer(panGestureRecognizer)
         
         //单击收起菜单手势
         let tapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                           action: #selector(handleTapGesture))
+        tapGestureRecognizer.delegate = self
         mainNavigationController.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if (touch.view?.superview?.isKind(of: CollectionViewCell.classForCoder()))! {
+            return false
+        }else {
+            return true
+        }
     }
     
     //导航栏左侧按钮事件响应

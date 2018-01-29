@@ -11,5 +11,9 @@
 
 #import "MathStringExpression.h"
 #import "XMessageView.h"
+#import "XUppercase.h"
+#import "XColorPickerView.h"
+#import "ThemeColorViewController.h"
+
 
 #endif /* Calculator_Bridging_Header_h */

@@ -24,19 +24,16 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     let historyPlistPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/HistoryData.plist"
     
     var calcComplexStr:String = "0"
+    
+    var themeColor:UIColor? = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        self.navigationController?.navigationBar.subviews.first?.alpha = 0
-//        self.navigationController?.navigationBar.isTranslucent = true
-//        self.navigationController?.isNavigationBarHidden = true
+        
         self.navigationController?.navigationBar.tintColor = UIColor.white
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        self.navigationController?.navigationBar.subviews.first?.alpha = 0
-//        self.navigationController?.navigationBar.isTranslucent = true
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -56,7 +53,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         }
         
         let myAppdelegate = UIApplication.shared.delegate as! AppDelegate
-        myAppdelegate.blockObject = {(param: String) in
+        myAppdelegate.blockObj = {(param: String) in
             print(param)
             self.showLabel.text = self.getExpressionFromStr(str: param)
             
@@ -67,7 +64,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
             }
             else {
                 self.isCalc = false
-                XMessageView.messageShow("输入的表达式不对哦!")
+//                XMessageView.messageShow("输入的表达式不对哦!")
                 return
             }
             
@@ -80,7 +77,33 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
             self.historyData.write(toFile: self.historyPlistPath, atomically: true)
             print(self.historyData)
             self.tabelView.reloadData()
+        } 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let red:CGFloat = CGFloat(UserDefaults.standard.float(forKey: "RED"))
+        let green:CGFloat = CGFloat(UserDefaults.standard.float(forKey: "GREEN"))
+        let blue:CGFloat = CGFloat(UserDefaults.standard.float(forKey: "BLUE"))
+
+        if red == nil {
+            self.themeColor = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
         }
+        else {
+            self.themeColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
+        }
+
+        let diaryList:String = Bundle.main.path(forResource: "Data", ofType:"plist")!
+        let data:NSDictionary = NSDictionary(contentsOfFile:diaryList)!
+        dataArray = data.object(forKey: "DataArray") as? NSArray
+        
+        if NSMutableArray(contentsOfFile: historyPlistPath) != nil
+        {
+            self.historyData = NSMutableArray(contentsOfFile: historyPlistPath)!
+        }
+        self.tabelView.reloadData()
+        self.collectionView.reloadData()
     }
     
     // 获取剪切板中的表达式
@@ -138,13 +161,18 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
             cell.addGestureRecognizer(longpressGesutre)
         }
         if indexPath.row == 3 || indexPath.row == 7 || indexPath.row == 11 || indexPath.row == 15 || indexPath.row == 18 {
-            cell.backgroundColor = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
+//            cell.backgroundColor = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
+            cell.backgroundColor = self.themeColor
             cell.label.textColor = UIColor.white
+        }
+        else {
+            cell.backgroundColor =  UIColor.init(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+            cell.label.textColor = UIColor.black
         }
         cell.label.text = dataArray?[indexPath.row] as? String
         return cell
     }
-    
+        
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // 震动

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ThemeColorViewController">
+            <connections>
+                <outlet property="colorPickerView" destination="BZ8-dY-MjK" id="3mf-Ti-VTZ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BZ8-dY-MjK">
+                    <rect key="frame" x="20" y="132.5" width="335" height="335"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="BZ8-dY-MjK" secondAttribute="height" id="l8I-L9-Jw4"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VML-Ip-VY4">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uyp-ly-i90">
+                            <rect key="frame" x="15" y="27" width="31" height="30"/>
+                            <state key="normal" title="返回">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchUpInsideEvent:" destination="-1" eventType="touchUpInside" id="dve-lJ-t4O"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主题色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5R-bo-By6">
+                            <rect key="frame" x="161.5" y="31.5" width="52" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fYZ-0L-lzA">
+                            <rect key="frame" x="329" y="27" width="31" height="30"/>
+                            <state key="normal" title="确认">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="touchUpInsideEvent:" destination="-1" eventType="touchUpInside" id="5u3-o7-EQQ"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.24313725489999999" green="0.67450980390000004" blue="0.93725490199999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="fYZ-0L-lzA" firstAttribute="bottom" secondItem="Uyp-ly-i90" secondAttribute="bottom" id="2ik-Dq-oxW"/>
+                        <constraint firstAttribute="height" constant="64" id="A15-BS-VY5"/>
+                        <constraint firstItem="fYZ-0L-lzA" firstAttribute="top" secondItem="Uyp-ly-i90" secondAttribute="top" id="AaF-ma-VBz"/>
+                        <constraint firstItem="R5R-bo-By6" firstAttribute="centerY" secondItem="VML-Ip-VY4" secondAttribute="centerY" constant="10" id="FHQ-Ot-5ih"/>
+                        <constraint firstAttribute="height" constant="64" id="Kn1-oH-8bH"/>
+                        <constraint firstItem="Uyp-ly-i90" firstAttribute="leading" secondItem="VML-Ip-VY4" secondAttribute="leading" constant="15" id="LQa-Kl-BJX"/>
+                        <constraint firstAttribute="trailing" secondItem="fYZ-0L-lzA" secondAttribute="trailing" constant="15" id="M1f-G1-idr"/>
+                        <constraint firstItem="Uyp-ly-i90" firstAttribute="centerY" secondItem="VML-Ip-VY4" secondAttribute="centerY" constant="10" id="g5L-oW-Ir2"/>
+                        <constraint firstItem="R5R-bo-By6" firstAttribute="centerX" secondItem="VML-Ip-VY4" secondAttribute="centerX" id="uut-FP-PDW"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="VML-Ip-VY4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="2bZ-vS-mDt"/>
+                <constraint firstAttribute="trailing" secondItem="BZ8-dY-MjK" secondAttribute="trailing" constant="20" id="IbW-DS-9s3"/>
+                <constraint firstItem="VML-Ip-VY4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="XK9-AX-XJE"/>
+                <constraint firstItem="BZ8-dY-MjK" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cQ7-Yk-Ga2"/>
+                <constraint firstAttribute="trailing" secondItem="VML-Ip-VY4" secondAttribute="trailing" id="pdx-zI-SzV"/>
+                <constraint firstItem="BZ8-dY-MjK" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.9" id="qGr-3h-6ox"/>
+                <constraint firstItem="BZ8-dY-MjK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="qNV-tY-3bz"/>
+            </constraints>
+            <point key="canvasLocation" x="-161" y="30"/>
+        </view>
+    </objects>
+</document>

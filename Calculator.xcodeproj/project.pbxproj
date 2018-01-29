@@ -37,8 +37,14 @@
 		045722E71FEFA9FE00E9EA7A /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722E61FEFA9FE00E9EA7A /* CalculatorTests.swift */; };
 		045722F21FEFA9FE00E9EA7A /* CalculatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722F11FEFA9FE00E9EA7A /* CalculatorUITests.swift */; };
 		045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722FF1FEFC4CE00E9EA7A /* CollectionViewCell.swift */; };
+		04887847201F5A5D00AC8C4B /* XColorPickerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04887845201F5A5D00AC8C4B /* XColorPickerView.mm */; };
+		0488784F201F5DE600AC8C4B /* ThemeColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488784D201F5DE600AC8C4B /* ThemeColorViewController.m */; };
+		04887850201F5DE600AC8C4B /* ThemeColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0488784E201F5DE600AC8C4B /* ThemeColorViewController.xib */; };
 		049EF407200F9B990076B6BE /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 049EF406200F9B990076B6BE /* share.png */; };
 		049EF409200FB31F0076B6BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EF408200FB31F0076B6BE /* MainViewController.swift */; };
+		049EF4112014A1D70076B6BE /* XUppercase.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF4102014A1D70076B6BE /* XUppercase.m */; };
+		049EF413201626780076B6BE /* CapitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EF412201626780076B6BE /* CapitalViewController.swift */; };
+		04BBDA2D2017775800B3ED3A /* UniExpressionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBDA2C2017775800B3ED3A /* UniExpressionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,8 +119,17 @@
 		045722F11FEFA9FE00E9EA7A /* CalculatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorUITests.swift; sourceTree = "<group>"; };
 		045722F31FEFA9FE00E9EA7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		045722FF1FEFC4CE00E9EA7A /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		04887845201F5A5D00AC8C4B /* XColorPickerView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = XColorPickerView.mm; sourceTree = "<group>"; };
+		04887846201F5A5D00AC8C4B /* XColorPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XColorPickerView.h; sourceTree = "<group>"; };
+		0488784C201F5DE600AC8C4B /* ThemeColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeColorViewController.h; sourceTree = "<group>"; };
+		0488784D201F5DE600AC8C4B /* ThemeColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeColorViewController.m; sourceTree = "<group>"; };
+		0488784E201F5DE600AC8C4B /* ThemeColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeColorViewController.xib; sourceTree = "<group>"; };
 		049EF406200F9B990076B6BE /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		049EF408200FB31F0076B6BE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		049EF40F2014A1D70076B6BE /* XUppercase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUppercase.h; sourceTree = "<group>"; };
+		049EF4102014A1D70076B6BE /* XUppercase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XUppercase.m; sourceTree = "<group>"; };
+		049EF412201626780076B6BE /* CapitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalViewController.swift; sourceTree = "<group>"; };
+		04BBDA2C2017775800B3ED3A /* UniExpressionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniExpressionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +180,11 @@
 				0415B79A200B352B0063EF25 /* ViewController.swift */,
 				049EF408200FB31F0076B6BE /* MainViewController.swift */,
 				0415B799200B352B0063EF25 /* MenuViewController.swift */,
+				049EF412201626780076B6BE /* CapitalViewController.swift */,
+				04BBDA2C2017775800B3ED3A /* UniExpressionViewController.swift */,
+				0488784C201F5DE600AC8C4B /* ThemeColorViewController.h */,
+				0488784D201F5DE600AC8C4B /* ThemeColorViewController.m */,
+				0488784E201F5DE600AC8C4B /* ThemeColorViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -182,9 +202,13 @@
 		041EC39D1FFA9101008962C1 /* WidgetOC */ = {
 			isa = PBXGroup;
 			children = (
+				041EC39E1FFA9128008962C1 /* MathStringExpression */,
 				040D76E41FFBBEF700A5823F /* XMessageView.h */,
 				040D76E51FFBBEF700A5823F /* XMessageView.m */,
-				041EC39E1FFA9128008962C1 /* MathStringExpression */,
+				049EF40F2014A1D70076B6BE /* XUppercase.h */,
+				049EF4102014A1D70076B6BE /* XUppercase.m */,
+				04887846201F5A5D00AC8C4B /* XColorPickerView.h */,
+				04887845201F5A5D00AC8C4B /* XColorPickerView.mm */,
 			);
 			path = WidgetOC;
 			sourceTree = "<group>";
@@ -421,6 +445,7 @@
 				049EF407200F9B990076B6BE /* share.png in Resources */,
 				045722D91FEFA9FE00E9EA7A /* Assets.xcassets in Resources */,
 				040C87DE1FF2568C00CCBCC2 /* Data.plist in Resources */,
+				04887850201F5DE600AC8C4B /* ThemeColorViewController.xib in Resources */,
 				045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -448,6 +473,7 @@
 			files = (
 				041EC3CB1FFA9128008962C1 /* MSNumberGroup.m in Sources */,
 				049EF409200FB31F0076B6BE /* MainViewController.swift in Sources */,
+				0488784F201F5DE600AC8C4B /* ThemeColorViewController.m in Sources */,
 				041EC3CA1FFA9128008962C1 /* MSNumber.m in Sources */,
 				041EC3CC1FFA9128008962C1 /* MSOperator.m in Sources */,
 				041EC3C71FFA9128008962C1 /* MSConstant.m in Sources */,
@@ -465,10 +491,14 @@
 				0415B79B200B352B0063EF25 /* MenuViewController.swift in Sources */,
 				045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */,
 				041EC3C41FFA9128008962C1 /* MSStack.m in Sources */,
+				049EF413201626780076B6BE /* CapitalViewController.swift in Sources */,
 				041EC3CD1FFA9128008962C1 /* MSPairOperator.m in Sources */,
 				041EC3CF1FFA9128008962C1 /* MSValueOperator.m in Sources */,
 				041EC3C11FFA9128008962C1 /* MSElementTable.m in Sources */,
+				04BBDA2D2017775800B3ED3A /* UniExpressionViewController.swift in Sources */,
 				041EC3C91FFA9128008962C1 /* MSFunctionOperator.m in Sources */,
+				04887847201F5A5D00AC8C4B /* XColorPickerView.mm in Sources */,
+				049EF4112014A1D70076B6BE /* XUppercase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
