@@ -12,9 +12,11 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var settingTableView: UITableView!
     
-    let titlesDictionary = [["换肤", "万能表达式", "大写人民币", "清理历史记录"],["分享", "意见反馈"]]
+    let titlesArray = [["换肤", "声音", "年终奖", "个税计算", "房贷计算器", "万能表达式", "大写人民币", "清理历史记录"],["分享", "意见反馈"]]
     let heightCell:CGFloat = 50
 
+    var isClear:Bool? = !true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,17 +26,17 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return titlesDictionary.count
+        return titlesArray.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return titlesDictionary[section].count
+        return titlesArray[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "menuViewCell", for: indexPath)
         cell.backgroundColor = UIColor.clear
-        cell.textLabel!.text = titlesDictionary[indexPath.section][indexPath.row]
+        cell.textLabel!.text = titlesArray[indexPath.section][indexPath.row]
         return cell
     }
     
@@ -43,32 +45,69 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(titlesDictionary[indexPath.section][indexPath.row])
+        print(titlesArray[indexPath.section][indexPath.row])
         
         if indexPath.section == 0 {
-            if indexPath.row == 0 {
+            switch indexPath.row {
+            case 0:
                 // 换肤
                 let themeColorVC:ThemeColorViewController = ThemeColorViewController.init()
                 self.present(themeColorVC, animated: true, completion: nil)
-            }
-            if indexPath.row == 1 {
+                break
+            case 1:
+                // 声音
+                let sound:Bool = UserDefaults.standard.bool(forKey: "SOUND")
+                if sound != nil
+                {
+                    UserDefaults.standard.setValue(!sound, forKey: "SOUND")
+                    if sound
+                    {
+                        XMessageView.messageShow("按键声关闭")
+                    }
+                    else {
+                        XMessageView.messageShow("按键声打开")
+                    }
+                }
+                else {
+                    UserDefaults.standard.setValue(!true, forKey: "SOUND")
+                }
+                
+                break
+            case 2:
+                // 年终奖
+                let yearAwardsVC:YearAwardsViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "YearAwardsViewController") as! YearAwardsViewController
+                self.present(yearAwardsVC, animated: true, completion: nil)
+                break
+            case 3:
+                // 个税计算
+                let aTaxCalVC:ATaxCalViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ATaxCalViewController") as! ATaxCalViewController
+                self.present(aTaxCalVC, animated: true, completion: nil)
+                break
+            case 4:
+                // 房贷计算器
+                let mortagageVC:MortgageViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MortgageViewController") as! MortgageViewController
+                self.present(mortagageVC, animated: true, completion: nil)
+                break
+            case 5:
                 // 万能表达式
                 let uniExpVC:UniExpressionViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "UniExpressionViewController") as! UniExpressionViewController
                 self.present(uniExpVC, animated: true, completion: nil)
-            }
-            if indexPath.row == 2 {
+                break
+            case 6:
                 // 大写人民币
                 let capitalVC:CapitalViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CapitalViewController") as! CapitalViewController
                 self.present(capitalVC, animated: true, completion: nil)
-                //            self.navigationController?.pushViewController(capitalVC, animated: true)
-            }
-            if indexPath.row == 3 {
+                break
+            case 7:
                 // 清空历史记录
                 let historyData:NSMutableArray = NSMutableArray.init()
                 let historyPlistPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/HistoryData.plist"
                 historyData.write(toFile: historyPlistPath, atomically: true)
                 XMessageView.messageShow("清除成功")
-//                ViewController.animateMainView(true)
+                self.isClear = true
+                break
+            default:
+                break
             }
         }
     }

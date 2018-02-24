@@ -21,7 +21,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
     var mainViewController:MainViewController!
     
     // 菜单页控制器
-    var menuViewController:MenuViewController?
+    var menuViewController:MenuViewController!
     
     // 菜单页当前状态
     var currentState = MenuState.Collapsed {
@@ -92,6 +92,11 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         //如果菜单是展开的则会收起，否则就展开
         if currentState == .Expanded {
             animateMainView(shouldExpand: false)
+            if (self.menuViewController?.isClear)! {
+                // 清除历史记录
+                self.mainViewController.showLabel.text = ""
+                self.mainViewController.viewWillAppear(true)
+            }
         }else {
             addMenuViewController()
             animateMainView(shouldExpand: true)
@@ -104,6 +109,11 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         switch(recognizer.state) {
         // 刚刚开始滑动
         case .began:
+//            if (self.menuViewController.isClear)! {
+//                // 清除历史记录
+//                self.mainViewController.showLabel.text = ""
+//                self.mainViewController.viewWillAppear(true)
+//            }
             // 判断拖动方向
             let dragFromLeftToRight = (recognizer.velocity(in: view).x > 0)
             // 如果刚刚开始滑动的时候还处于主页面，从左向右滑动加入侧面菜单
@@ -160,6 +170,11 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         //如果菜单是展开的点击主页部分则会收起
         if currentState == .Expanded {
             animateMainView(shouldExpand: false)
+            if (self.menuViewController?.isClear)! {
+                // 清除历史记录
+                self.mainViewController.showLabel.text = ""
+                self.mainViewController.viewWillAppear(true)
+            }
         }
     }
     

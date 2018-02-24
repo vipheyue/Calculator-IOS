@@ -153,4 +153,204 @@ class XCalculateString: NSObject {
         }
         return str.substring(from: numStartPoint) as NSString
     }
+    
+    // 简单的科学计算
+    func scientificComputingStrWithValue(str:String, value:Double) -> String {
+        var returnDou:Double = 0
+        switch str {
+        case "sin":
+            returnDou = sin(value)
+            break
+        case "cos":
+            returnDou = cos(value)
+            break
+        case "tan":
+            returnDou = tan(value)
+            break
+        case "asin":
+            returnDou = asin(value)
+            break
+        case "acos":
+            returnDou = acos(value)
+            break
+        case "atan":
+            returnDou = atan(value)
+            break
+        case "sinh":
+            returnDou = sinh(value)
+            break
+        case "cosh":
+            returnDou = cosh(value)
+            break
+        case "tanh":
+            returnDou = tanh(value)
+            break
+        case "asinh":
+            returnDou = asinh(value)
+            break
+        case "acosh":
+            returnDou = acosh(value)
+            break
+        case "atanh":
+            returnDou = atanh(value)
+            break
+        case "e":
+            returnDou = 2.718281828459
+            break
+        case "pi":
+            returnDou = 3.1415926535898
+            break
+        case "epow"://e^x
+            returnDou = pow(2.718281828459, value)
+            break
+        case "2pow":
+            returnDou = pow(2, value)
+            break
+        case "log":
+            returnDou = log(value)
+            break
+        case "sqrt":
+            returnDou = sqrt(value)
+            break
+        case "cube":
+            returnDou = pow(value, 1.0/3)
+            break
+        case "y^x"://y^x
+//            returnDou = 3.1415926535898
+            break
+        case "˟√y"://˟√y
+//            returnDou = 3.1415926535898
+            break
+        case "y^x"://y^x
+//            returnDou = 3.1415926535898
+            break
+        default:
+            break
+        }
+        return returnDou.description
+    }
+    
+    let speedCalArray = [0.00, 105.00, 555.00, 1005.00, 2755.00, 5505.00, 13505.00]
+    let taxRateArray = [0.03, 0.10, 0.20, 0.25, 0.30, 0.35, 0.45]
+    let beyondArray = [1500.00, 4500.00, 9000.00, 35000.00, 55000.00, 80000.00]
+
+    // 税率计算
+    func taxCalculate(total:Double, section:Double, isTax:Bool) -> (String, String) {
+        var tax:Double = 0.00
+        var tempTotal = total
+        if isTax {
+            tempTotal = section
+        }
+        if section<beyondArray[0] {
+            tax = tempTotal*taxRateArray[0]-speedCalArray[0]
+        }
+        else if section<beyondArray[1] {
+            tax = tempTotal*taxRateArray[1]-speedCalArray[1]
+        }
+        else if section<beyondArray[2] {
+            tax = tempTotal*taxRateArray[2]-speedCalArray[2]
+        }
+        else if section<beyondArray[3] {
+            tax = tempTotal*taxRateArray[3]-speedCalArray[3]
+        }
+        else if section<beyondArray[4] {
+            tax = tempTotal*taxRateArray[4]-speedCalArray[4]
+        }
+        else if section<beyondArray[5] {
+            tax = tempTotal*taxRateArray[5]-speedCalArray[5]
+        }
+        else {
+            tax = tempTotal*taxRateArray[6]-speedCalArray[6]
+        }
+        let revenue = total-tax
+        return (tax.description, revenue.description)
+    }
+    
+    // 年终奖
+    func yearAwardCalculate(award:String) -> (String, String) {
+        let total:Double = (award as NSString).doubleValue
+        return self.taxCalculate(total: total, section: total/12, isTax: !true)
+    }
+    
+    // 个税计算
+    func aTaxCalculate(wage:String, indivPay:String) -> (String, String) {
+        let total = (wage as NSString).doubleValue
+        let section = total - (indivPay as NSString).doubleValue - 3500.0
+        let (tax, revenue) = self.taxCalculate(total: total, section: section, isTax: true)
+        return (tax, ((revenue as NSString).doubleValue-(indivPay as NSString).doubleValue).description)
+    }
+    
+    // 房贷计算
+    func mortgageCalculate(way:Int, money:Double, year:Int, rate:Double) -> (String, String) {
+        var monthMoney:Double = 0
+        var reduceMoney:Double = 0
+        let moneyTemp = money*10000
+        let rateTemp = rate/100.0/12.0
+        switch way {
+        case 0:
+            // 等额本息
+            monthMoney = moneyTemp*rateTemp*pow((1+rateTemp), Double(year)*12.0)/(pow((1+rateTemp), Double(year)*12.0)-1)
+            break
+        case 1:
+            // 等额本金
+            monthMoney = (moneyTemp/(Double(year)*12))+(moneyTemp-0)*rateTemp  // 首月已归还本金累计额为0
+            reduceMoney = moneyTemp/(Double(year)*12)*rateTemp
+            break
+        default:
+            break
+        }
+        return (NSString(format:"%.2f", monthMoney) as String, NSString(format:"%.2f", reduceMoney) as String)
+    }
+
 }
+
+
+/*
+        房贷计算公式说明
+ 
+ 　　　　根据还款方式一般房贷计算公式分为两种：
+ 
+ 　　　　一、等额本息计算公式
+ 
+ 　　　　每月月供额=〔贷款本金×月利率×(1＋月利率)＾还款月数〕÷〔(1＋月利率)＾还款月数-1〕
+ 
+ 　　　　每月应还利息=贷款本金×月利率×〔(1+月利率)^还款月数-(1+月利率)^(还款月序号-1)〕÷〔(1+月利率)^还款月数-1〕
+ 
+ 　　　　每月应还本金=贷款本金×月利率×(1+月利率)^(还款月序号-1)÷〔(1+月利率)^还款月数-1〕
+ 
+ 　　　　总利息=还款月数×每月月供额-贷款本金
+ 
+ 　　　　计算原则：银行从每月月供款中，先收剩余本金利息，后收本金；利息在月供款中的比例中随剩余本金的减少而降低，本金在月供款中的比例因而升高，但月供总额保持不变。
+ 
+ 
+ 　　　　二、等额本金计算公式
+ 
+ 　　　　每月月供额=(贷款本金÷还款月数)+(贷款本金-已归还本金累计额)×月利率
+ 
+ 　　　　每月应还本金=贷款本金÷还款月数
+ 
+ 　　　　每月应还利息=剩余本金×月利率=(贷款本金-已归还本金累计额)×月利率
+ 
+ 　　　　每月月供递减额=每月应还本金×月利率=贷款本金÷还款月数×月利率
+ 
+ 　　　　总利息=还款月数×(总贷款额×月利率-月利率×(总贷款额÷还款月数)*(还款月数-1)÷2+总贷款额÷还款月数)
+ 
+ 　　　　月利率=年利率÷12
+ 
+ 　　　　15^4=15×15×15×15(15的4次方,即4个15相乘的意思)
+ 
+ 　　　　计算原则：每月归还的本金额始终不变，利息随剩余本金的减少而减少。
+ 
+ 
+ 　　　　计算公式说明：
+ 
+ 　　　　以上算式中本金：贷款总额
+ 
+ 　　　　还款月数：贷款年限X12。例如贷款10年还款月数就是10X12=120个月
+ 
+ 　　　　月利率：月利率=年利率/12
+ 
+ 　　　　年利率：也就是现在讨论房贷热点里，基础利率打7折，85折后得出数字。
+ 
+ 　　　　累计还款总额：等额本金还款方式第一个月的累积还款总额为0。
+ */

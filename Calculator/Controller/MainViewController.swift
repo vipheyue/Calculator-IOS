@@ -94,16 +94,21 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
             self.themeColor = UIColor.init(red: red, green: green, blue: blue, alpha: 1)
         }
 
+        self.getHistoryData()
+        self.collectionView.reloadData()
+    }
+    
+    // 获取历史记录
+    func getHistoryData() {
         let diaryList:String = Bundle.main.path(forResource: "Data", ofType:"plist")!
         let data:NSDictionary = NSDictionary(contentsOfFile:diaryList)!
-        dataArray = data.object(forKey: "DataArray") as? NSArray
+        self.dataArray = data.object(forKey: "DataArray") as? NSArray
         
         if NSMutableArray(contentsOfFile: historyPlistPath) != nil
         {
             self.historyData = NSMutableArray(contentsOfFile: historyPlistPath)!
         }
         self.tabelView.reloadData()
-        self.collectionView.reloadData()
     }
     
     // 获取剪切板中的表达式
@@ -178,7 +183,17 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         // 震动
 //        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         // 咚咚咚声音
-        AudioServicesPlaySystemSound(1106)
+        let sound:Bool = UserDefaults.standard.bool(forKey: "SOUND")
+        if sound != nil
+        {
+            if sound
+            {
+                AudioServicesPlaySystemSound(1106)
+            }
+        }
+        else {
+            AudioServicesPlaySystemSound(1106)
+        }
         
         if ((showLabel.text?.range(of: "=")) != nil) && indexPath.row == 18{
             return
@@ -211,7 +226,14 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
             let allRight:Bool = MSExpressionHelper.helperCheckExpression(showLabel.text, using: nil)
             if(allRight){
                 //计算表达式
-                calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
+                let calcStr:NSString = MSParser.parserComputeExpression(showLabel.text, error: nil)! as NSString
+                if ((calcStr.range(of: ".", options: NSString.CompareOptions.backwards).length != 0) && (calcStr.substring(from: (calcStr.range(of: ".", options: NSString.CompareOptions.backwards)).location)).count > 4)
+                {
+                    calcComplexStr = NSString(format:"%.4f",calcStr.doubleValue) as String
+                }
+                else {
+                    calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
+                }
             }
             else {
                 isCalc = false

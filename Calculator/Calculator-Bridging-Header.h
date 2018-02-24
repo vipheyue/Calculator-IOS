@@ -14,6 +14,6 @@
 #import "XUppercase.h"
 #import "XColorPickerView.h"
 #import "ThemeColorViewController.h"
-
+#import <Bugly/Bugly.h>
 
 #endif /* Calculator_Bridging_Header_h */

@@ -30,6 +30,9 @@
 		041EC3CD1FFA9128008962C1 /* MSPairOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3BC1FFA9128008962C1 /* MSPairOperator.m */; };
 		041EC3CE1FFA9128008962C1 /* MSValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3BE1FFA9128008962C1 /* MSValue.m */; };
 		041EC3CF1FFA9128008962C1 /* MSValueOperator.m in Sources */ = {isa = PBXBuildFile; fileRef = 041EC3C01FFA9128008962C1 /* MSValueOperator.m */; };
+		042EBCEA203034B900EDAC8A /* YearAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EBCE9203034B900EDAC8A /* YearAwardsViewController.swift */; };
+		042EBCEC203054DE00EDAC8A /* ATaxCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EBCEB203054DE00EDAC8A /* ATaxCalViewController.swift */; };
+		042EBCEE20305F7000EDAC8A /* MortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EBCED20305F7000EDAC8A /* MortgageViewController.swift */; };
 		045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */; };
 		045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045722D51FEFA9FE00E9EA7A /* Main.storyboard */; };
 		045722D91FEFA9FE00E9EA7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045722D81FEFA9FE00E9EA7A /* Assets.xcassets */; };
@@ -40,6 +43,11 @@
 		04887847201F5A5D00AC8C4B /* XColorPickerView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 04887845201F5A5D00AC8C4B /* XColorPickerView.mm */; };
 		0488784F201F5DE600AC8C4B /* ThemeColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0488784D201F5DE600AC8C4B /* ThemeColorViewController.m */; };
 		04887850201F5DE600AC8C4B /* ThemeColorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0488784E201F5DE600AC8C4B /* ThemeColorViewController.xib */; };
+		0488785B202307F200AC8C4B /* Bugly.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0488785A202307F200AC8C4B /* Bugly.framework */; };
+		0488785E2023081600AC8C4B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0488785D2023081600AC8C4B /* SystemConfiguration.framework */; };
+		048878602023081E00AC8C4B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0488785F2023081E00AC8C4B /* Security.framework */; };
+		048878622023083600AC8C4B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 048878612023083600AC8C4B /* libz.tbd */; };
+		048878642023084500AC8C4B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 048878632023084500AC8C4B /* libc++.tbd */; };
 		049EF407200F9B990076B6BE /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 049EF406200F9B990076B6BE /* share.png */; };
 		049EF409200FB31F0076B6BE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EF408200FB31F0076B6BE /* MainViewController.swift */; };
 		049EF4112014A1D70076B6BE /* XUppercase.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF4102014A1D70076B6BE /* XUppercase.m */; };
@@ -106,6 +114,9 @@
 		041EC3BF1FFA9128008962C1 /* MSValueOperator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MSValueOperator.h; sourceTree = "<group>"; };
 		041EC3C01FFA9128008962C1 /* MSValueOperator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MSValueOperator.m; sourceTree = "<group>"; };
 		041EC3D31FFA925C008962C1 /* Calculator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Calculator-Bridging-Header.h"; sourceTree = "<group>"; };
+		042EBCE9203034B900EDAC8A /* YearAwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAwardsViewController.swift; sourceTree = "<group>"; };
+		042EBCEB203054DE00EDAC8A /* ATaxCalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATaxCalViewController.swift; sourceTree = "<group>"; };
+		042EBCED20305F7000EDAC8A /* MortgageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageViewController.swift; sourceTree = "<group>"; };
 		045722CE1FEFA9FE00E9EA7A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045722D61FEFA9FE00E9EA7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,6 +135,11 @@
 		0488784C201F5DE600AC8C4B /* ThemeColorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThemeColorViewController.h; sourceTree = "<group>"; };
 		0488784D201F5DE600AC8C4B /* ThemeColorViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThemeColorViewController.m; sourceTree = "<group>"; };
 		0488784E201F5DE600AC8C4B /* ThemeColorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeColorViewController.xib; sourceTree = "<group>"; };
+		0488785A202307F200AC8C4B /* Bugly.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bugly.framework; sourceTree = "<group>"; };
+		0488785D2023081600AC8C4B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0488785F2023081E00AC8C4B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		048878612023083600AC8C4B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		048878632023084500AC8C4B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		049EF406200F9B990076B6BE /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		049EF408200FB31F0076B6BE /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		049EF40F2014A1D70076B6BE /* XUppercase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XUppercase.h; sourceTree = "<group>"; };
@@ -137,6 +153,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				048878642023084500AC8C4B /* libc++.tbd in Frameworks */,
+				048878622023083600AC8C4B /* libz.tbd in Frameworks */,
+				048878602023081E00AC8C4B /* Security.framework in Frameworks */,
+				0488785E2023081600AC8C4B /* SystemConfiguration.framework in Frameworks */,
+				0488785B202307F200AC8C4B /* Bugly.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +206,9 @@
 				0488784C201F5DE600AC8C4B /* ThemeColorViewController.h */,
 				0488784D201F5DE600AC8C4B /* ThemeColorViewController.m */,
 				0488784E201F5DE600AC8C4B /* ThemeColorViewController.xib */,
+				042EBCE9203034B900EDAC8A /* YearAwardsViewController.swift */,
+				042EBCEB203054DE00EDAC8A /* ATaxCalViewController.swift */,
+				042EBCED20305F7000EDAC8A /* MortgageViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -282,6 +306,7 @@
 				045722E51FEFA9FE00E9EA7A /* CalculatorTests */,
 				045722F01FEFA9FE00E9EA7A /* CalculatorUITests */,
 				045722CF1FEFA9FE00E9EA7A /* Products */,
+				0488785C2023081600AC8C4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -298,6 +323,7 @@
 		045722D01FEFA9FE00E9EA7A /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				04887859202307B600AC8C4B /* Framework */,
 				0415B796200B32510063EF25 /* Images */,
 				041EC39D1FFA9101008962C1 /* WidgetOC */,
 				041BC9B01FF37867009016FE /* View */,
@@ -330,6 +356,25 @@
 				045722F31FEFA9FE00E9EA7A /* Info.plist */,
 			);
 			path = CalculatorUITests;
+			sourceTree = "<group>";
+		};
+		04887859202307B600AC8C4B /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				0488785A202307F200AC8C4B /* Bugly.framework */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
+		0488785C2023081600AC8C4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				048878632023084500AC8C4B /* libc++.tbd */,
+				048878612023083600AC8C4B /* libz.tbd */,
+				0488785F2023081E00AC8C4B /* Security.framework */,
+				0488785D2023081600AC8C4B /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,6 +544,9 @@
 				041EC3C91FFA9128008962C1 /* MSFunctionOperator.m in Sources */,
 				04887847201F5A5D00AC8C4B /* XColorPickerView.mm in Sources */,
 				049EF4112014A1D70076B6BE /* XUppercase.m in Sources */,
+				042EBCEA203034B900EDAC8A /* YearAwardsViewController.swift in Sources */,
+				042EBCEE20305F7000EDAC8A /* MortgageViewController.swift in Sources */,
+				042EBCEC203054DE00EDAC8A /* ATaxCalViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -666,6 +714,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VHCZ8JHWRB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Calculator/Framework",
+				);
 				INFOPLIST_FILE = Calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -683,6 +735,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VHCZ8JHWRB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Calculator/Framework",
+				);
 				INFOPLIST_FILE = Calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

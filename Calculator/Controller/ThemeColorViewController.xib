@@ -40,8 +40,8 @@
                                 <action selector="touchUpInsideEvent:" destination="-1" eventType="touchUpInside" id="dve-lJ-t4O"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主题色" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5R-bo-By6">
-                            <rect key="frame" x="161.5" y="31.5" width="52" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="换肤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5R-bo-By6">
+                            <rect key="frame" x="170" y="31.5" width="35" height="21"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                 <constraint firstItem="BZ8-dY-MjK" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.9" id="qGr-3h-6ox"/>
                 <constraint firstItem="BZ8-dY-MjK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="qNV-tY-3bz"/>
             </constraints>
-            <point key="canvasLocation" x="-161" y="30"/>
+            <point key="canvasLocation" x="-159" y="45"/>
         </view>
     </objects>
 </document>
