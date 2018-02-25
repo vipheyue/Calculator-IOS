@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,11 +36,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="C78-j9-GhR">
-                                <rect key="frame" x="0.0" y="354.5" width="375" height="312.5"/>
+                                <rect key="frame" x="0.0" y="267" width="375" height="400"/>
                                 <color key="backgroundColor" red="0.78823529410000004" green="0.78823529410000004" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="C78-j9-GhR" secondAttribute="height" multiplier="6:5" id="q48-A0-61I"/>
-                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pEd-jK-4jP">
                                     <size key="itemSize" width="153" height="145"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -80,7 +76,7 @@
                                 </connections>
                             </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWT-Om-I8E">
-                                <rect key="frame" x="0.0" y="324.5" width="365" height="30"/>
+                                <rect key="frame" x="0.0" y="237" width="365" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5GO-fR-Sva"/>
                                 </constraints>
@@ -89,7 +85,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uJX-fO-Khb">
-                                <rect key="frame" x="0.0" y="64" width="375" height="260.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="173"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SZt-jt-Ikx" id="NcJ-Vs-pBp"/>
@@ -102,6 +98,7 @@
                             <constraint firstItem="uJX-fO-Khb" firstAttribute="leading" secondItem="ElK-no-1a5" secondAttribute="leading" id="7cd-vk-RcA"/>
                             <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="uJX-fO-Khb" secondAttribute="trailing" id="PUJ-Ie-aUT"/>
                             <constraint firstItem="iWT-Om-I8E" firstAttribute="top" secondItem="uJX-fO-Khb" secondAttribute="bottom" id="V8E-BC-ogk"/>
+                            <constraint firstItem="C78-j9-GhR" firstAttribute="height" secondItem="1Sc-G3-ohN" secondAttribute="height" multiplier="0.6" id="eVo-sY-r7N"/>
                             <constraint firstItem="C78-j9-GhR" firstAttribute="leading" secondItem="ElK-no-1a5" secondAttribute="leading" id="fTw-4P-NWY"/>
                             <constraint firstItem="C78-j9-GhR" firstAttribute="top" secondItem="iWT-Om-I8E" secondAttribute="bottom" id="gqR-bE-nJm"/>
                             <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="C78-j9-GhR" secondAttribute="trailing" id="o6y-g3-fSn"/>

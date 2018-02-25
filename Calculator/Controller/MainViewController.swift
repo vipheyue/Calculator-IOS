@@ -255,10 +255,11 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth:CGFloat = self.view.frame.size.width
+        let cellHeight:CGFloat = self.view.frame.size.height
         if indexPath.row == 16 {
-            return CGSize(width: cellWidth/2-1, height: cellWidth/4.0/1.5)
+            return CGSize(width: cellWidth/2-1, height: cellHeight*0.6/5)
         }
-        return CGSize(width: (cellWidth-5)/4, height: cellWidth/4.0/1.5)
+        return CGSize(width: (cellWidth-5)/4, height: cellHeight*0.6/5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
