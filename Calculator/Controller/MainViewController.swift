@@ -231,6 +231,10 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
                 if ((calcStr.range(of: ".", options: NSString.CompareOptions.backwards).length != 0) && (calcStr.substring(from: (calcStr.range(of: ".", options: NSString.CompareOptions.backwards)).location)).count > 4)
                 {
                     calcComplexStr = NSString(format:"%.4f",calcStr.doubleValue) as String
+                    while calcComplexStr.last == "0"
+                    {
+                        calcComplexStr.remove(at: calcComplexStr.index(before: calcComplexStr.endIndex))
+                    }
                 }
                 else {
                     calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
