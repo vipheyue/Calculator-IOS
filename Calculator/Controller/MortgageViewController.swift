@@ -21,6 +21,12 @@ class MortgageViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.tapGestureEvent))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapGestureEvent() {
+        self.view.endEditing(true)
     }
     
     @IBAction func touchUpInsideBtn(_ sender: UIButton) {

@@ -39,6 +39,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         collectionView.delegate = self
         tabelView.dataSource = self
         tabelView.delegate = self
+        self.automaticallyAdjustsScrollViewInsets = !true
         
         let nib:UINib = UINib(nibName:"TableViewCell", bundle: Bundle.main)
         tabelView.register(nib, forCellReuseIdentifier: "TableViewCell")

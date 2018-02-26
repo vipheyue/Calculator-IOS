@@ -96,6 +96,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uJX-fO-Khb" firstAttribute="leading" secondItem="ElK-no-1a5" secondAttribute="leading" id="7cd-vk-RcA"/>
+                            <constraint firstItem="C78-j9-GhR" firstAttribute="bottom" secondItem="ElK-no-1a5" secondAttribute="bottom" id="KCv-j8-uBt"/>
                             <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="uJX-fO-Khb" secondAttribute="trailing" id="PUJ-Ie-aUT"/>
                             <constraint firstItem="iWT-Om-I8E" firstAttribute="top" secondItem="uJX-fO-Khb" secondAttribute="bottom" id="V8E-BC-ogk"/>
                             <constraint firstItem="C78-j9-GhR" firstAttribute="height" secondItem="1Sc-G3-ohN" secondAttribute="height" multiplier="0.6" id="eVo-sY-r7N"/>
@@ -103,7 +104,6 @@
                             <constraint firstItem="C78-j9-GhR" firstAttribute="top" secondItem="iWT-Om-I8E" secondAttribute="bottom" id="gqR-bE-nJm"/>
                             <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="C78-j9-GhR" secondAttribute="trailing" id="o6y-g3-fSn"/>
                             <constraint firstItem="uJX-fO-Khb" firstAttribute="top" secondItem="ElK-no-1a5" secondAttribute="top" id="qhc-5W-167"/>
-                            <constraint firstItem="C78-j9-GhR" firstAttribute="bottom" secondItem="ElK-no-1a5" secondAttribute="bottom" id="t1l-0T-wBX"/>
                             <constraint firstItem="ElK-no-1a5" firstAttribute="trailing" secondItem="iWT-Om-I8E" secondAttribute="trailing" constant="10" id="vUY-ZK-loW"/>
                             <constraint firstItem="iWT-Om-I8E" firstAttribute="leading" secondItem="ElK-no-1a5" secondAttribute="leading" id="wqK-XZ-2gd"/>
                         </constraints>
