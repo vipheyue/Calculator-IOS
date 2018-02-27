@@ -41,6 +41,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         tabelView.delegate = self
         self.automaticallyAdjustsScrollViewInsets = !true
         
+        self.showLabel.lineBreakMode = NSLineBreakMode.byTruncatingHead
+        
         let nib:UINib = UINib(nibName:"TableViewCell", bundle: Bundle.main)
         tabelView.register(nib, forCellReuseIdentifier: "TableViewCell")
         
@@ -56,12 +58,24 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         let myAppdelegate = UIApplication.shared.delegate as! AppDelegate
         myAppdelegate.blockObj = {(param: String) in
             print(param)
-            self.showLabel.text = self.getExpressionFromStr(str: param)
+//            self.showLabel.text = self.getExpressionFromStr(str: param)
             
-            let allRight:Bool = MSExpressionHelper.helperCheckExpression(self.showLabel.text, using: nil)
+            let allRight:Bool = MSExpressionHelper.helperCheckExpression(param, using: nil)
             if(allRight){
                 //计算表达式
-                self.calcComplexStr = MSParser.parserComputeExpression(self.showLabel.text, error: nil)
+                let calcStr:NSString = MSParser.parserComputeExpression(param, error: nil) as! NSString
+                if ((calcStr.range(of: ".", options: NSString.CompareOptions.backwards).length != 0) && (calcStr.substring(from: (calcStr.range(of: ".", options: NSString.CompareOptions.backwards)).location)).count > 4)
+                {
+                    self.calcComplexStr = NSString(format:"%.4f",calcStr.doubleValue) as String
+                    while self.calcComplexStr.last == "0"
+                    {
+                        self.calcComplexStr.remove(at: self.calcComplexStr.index(before: self.calcComplexStr.endIndex))
+                    }
+                }
+                else {
+                    self.calcComplexStr = calcStr as String
+                }
+                
             }
             else {
                 self.isCalc = false
@@ -71,7 +85,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
             
             print(self.calcComplexStr,self.showLabel.text!)
             
-            self.showLabel.text = "\(self.showLabel.text ?? "")=\(self.calcComplexStr)"
+            self.showLabel.text = "\(param ?? "")=\(self.calcComplexStr)"
             self.isCalc = true
             // 保存历史数据
             self.historyData.add(self.showLabel.text!)
@@ -189,11 +203,11 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         {
             if sound
             {
-                AudioServicesPlaySystemSound(1106)
+                AudioServicesPlaySystemSound(1201)
             }
         }
         else {
-            AudioServicesPlaySystemSound(1106)
+            AudioServicesPlaySystemSound(1201)
         }
         
         if ((showLabel.text?.range(of: "=")) != nil) && indexPath.row == 18{
@@ -237,7 +251,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
                     }
                 }
                 else {
-                    calcComplexStr = MSParser.parserComputeExpression(showLabel.text, error: nil)
+                    calcComplexStr = calcStr as String
                 }
             }
             else {
@@ -296,6 +310,12 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return heightCell;
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell:TableViewCell = tableView.cellForRow(at: indexPath) as! TableViewCell
+        UIPasteboard.general.string = cell.recordLabel.text
+        XMessageView.messageShow("成功复制:"+(cell.recordLabel.text)!)
     }
 }
 

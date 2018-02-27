@@ -73,10 +73,10 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         mainNavigationController.view.addGestureRecognizer(panGestureRecognizer)
         
         //单击收起菜单手势
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                          action: #selector(handleTapGesture))
-        tapGestureRecognizer.delegate = self
-        mainNavigationController.view.addGestureRecognizer(tapGestureRecognizer)
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
+//                                                          action: #selector(handleTapGesture))
+//        tapGestureRecognizer.delegate = self
+//        mainNavigationController.view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {

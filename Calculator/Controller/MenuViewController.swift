@@ -12,7 +12,7 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     @IBOutlet weak var settingTableView: UITableView!
     
-    let titlesArray = [["换肤", "声音", "年终奖", "个税计算", "房贷计算器", "万能表达式", "大写人民币", "清理历史记录"],["分享", "意见反馈"]]
+    let titlesArray = [["换肤", "声音", "年终奖", "个税计算", "房贷计算器", "万能表达式", "大写人民币", "清理历史记录"],["意见反馈"]]
     let heightCell:CGFloat = 50
 
     var isClear:Bool? = !true
@@ -109,6 +109,14 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
             default:
                 break
             }
+        }
+        else if indexPath.section == 1
+        {
+            let alertViewController = UIAlertController(title: "联系方式", message: "邮箱:rumengjijiang@foxmail.com\nQQ群号:469859289", preferredStyle: .alert)
+            alertViewController.addAction(UIAlertAction(title: "确定", style: .cancel, handler: {
+                action in print("onAction")
+            }))
+            self.present(alertViewController, animated: true, completion: nil)
         }
     }
 

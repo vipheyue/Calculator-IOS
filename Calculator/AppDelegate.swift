@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pastStr:String? = UIPasteboard.general.string
         if pastStr != nil {
             self.blockObj?(pastStr!)
+            UIPasteboard.general.string = ""
         }
     }
 
