@@ -235,14 +235,26 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         if indexPath.row != 0 && indexPath.row != (dataArray?.count)!-1 {
             showLabel.text = "\(showLabel.text ?? "")\(dataArray![indexPath.row])"
         }
+        if showLabel.text?.count == 14 || showLabel.text?.count == 18
+        {
+            showLabel.font = UIFont.systemFont(ofSize: 30)
+        }
+        if showLabel.text?.count == 20
+        {
+            showLabel.font = UIFont.systemFont(ofSize: 20)
+        }
+        if showLabel.text?.count == 12 || showLabel.text?.count == 1
+        {
+            showLabel.font = UIFont.systemFont(ofSize: 40)
+        }
+        
         // 运算结果
         if indexPath.row == (dataArray?.count)!-1 {
-            
             let allRight:Bool = MSExpressionHelper.helperCheckExpression(showLabel.text, using: nil)
             if(allRight){
                 //计算表达式
                 let calcStr:NSString = MSParser.parserComputeExpression(showLabel.text, error: nil)! as NSString
-                if ((calcStr.range(of: ".", options: NSString.CompareOptions.backwards).length != 0) && (calcStr.substring(from: (calcStr.range(of: ".", options: NSString.CompareOptions.backwards)).location)).count > 4)
+                if ((calcStr.range(of: "e+", options: NSString.CompareOptions.backwards).length == 0) && (calcStr.range(of: ".", options: NSString.CompareOptions.backwards).length != 0) && (calcStr.substring(from: (calcStr.range(of: ".", options: NSString.CompareOptions.backwards)).location)).count > 4)
                 {
                     calcComplexStr = NSString(format:"%.4f",calcStr.doubleValue) as String
                     while calcComplexStr.last == "0"
@@ -309,7 +321,12 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return heightCell;
+        return UITableViewAutomaticDimension
+        return heightCell
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -317,5 +334,12 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         UIPasteboard.general.string = cell.recordLabel.text
         XMessageView.messageShow("成功复制:"+(cell.recordLabel.text)!)
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        self.historyData.removeObject(at: indexPath.row)
+        self.historyData.write(toFile: historyPlistPath, atomically: true)
+        self.tabelView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
+    }
+    
 }
 

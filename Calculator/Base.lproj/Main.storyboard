@@ -75,17 +75,17 @@
                                     <outlet property="delegate" destination="SZt-jt-Ikx" id="6WW-YA-nLg"/>
                                 </connections>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWT-Om-I8E">
-                                <rect key="frame" x="0.0" y="237" width="365" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iWT-Om-I8E">
+                                <rect key="frame" x="0.0" y="217" width="365" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5GO-fR-Sva"/>
+                                    <constraint firstAttribute="height" constant="50" id="5GO-fR-Sva"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uJX-fO-Khb">
-                                <rect key="frame" x="0.0" y="20" width="375" height="217"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="197"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="SZt-jt-Ikx" id="NcJ-Vs-pBp"/>

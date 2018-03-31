@@ -67,10 +67,10 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         mainViewController.navigationItem.leftBarButtonItem?.action = #selector(showMenu)
         
         //添加拖动手势
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self,
-                                                          action: #selector(handlePanGesture(_:)))
-        
-        mainNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+//        let panGestureRecognizer = UIPanGestureRecognizer(target: self,
+//                                                          action: #selector(handlePanGesture(_:)))
+//        
+//        mainNavigationController.view.addGestureRecognizer(panGestureRecognizer)
         
         //单击收起菜单手势
 //        let tapGestureRecognizer = UITapGestureRecognizer(target: self,
