@@ -27,6 +27,13 @@
 //    self.colorPicker.delegate = self;
     [self.colorPickerView addSubview:self.colorPicker];
     [self.colorPickerView bringSubviewToFront:self.colorPicker];
+    
+    
+    NSNumber *num = [NSNumber numberWithBool:NO];
+    
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:num,@"sdfdfs",@"23",@"dsaf",nil];
+    NSLog(@"dddd = %@", dic);
 }
 
 - (IBAction)touchUpInsideEvent:(UIButton *)sender {

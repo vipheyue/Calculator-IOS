@@ -122,6 +122,22 @@
             </objects>
             <point key="canvasLocation" x="-564" y="798"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="w1S-MP-pwI">
+            <objects>
+                <navigationController id="yTa-fV-mgD" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OxW-0Q-JG1">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="RlR-3S-wJw" kind="relationship" relationship="rootViewController" id="MFH-ID-2Jq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FpO-8L-3UA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1370" y="1499"/>
+        </scene>
         <!--Menu View Controller-->
         <scene sceneID="Sv8-p9-jgb">
             <objects>
@@ -135,7 +151,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="41" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="32J-H5-fXe">
-                                <rect key="frame" x="0.0" y="153.5" width="375" height="513"/>
+                                <rect key="frame" x="0.0" y="197.5" width="375" height="469"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -166,7 +182,7 @@
                                 <sections/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QNy-ud-Vbt">
-                                <rect key="frame" x="0.0" y="20" width="375" height="133.5"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="133.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ群号:469859289" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2a-kp-HI6">
                                         <rect key="frame" x="15" y="96.5" width="360" height="17"/>
@@ -204,6 +220,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="doD-zK-JhG"/>
                     </view>
+                    <navigationItem key="navigationItem" id="4bt-Mi-kh2"/>
                     <connections>
                         <outlet property="settingTableView" destination="32J-H5-fXe" id="gcN-7J-eFB"/>
                     </connections>

@@ -198,6 +198,9 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
             // 建立父子关系
             addChildViewController(menuViewController!)
             menuViewController!.didMove(toParentViewController: self)
+            menuViewController.blockObj = {
+                self.showMenu()
+            }
             
             // 在侧滑菜单之上增加黑色遮罩层，目的是实现视差特效
             blackCover = UIView(frame: self.view.frame.offsetBy(dx: 0, dy: 0))

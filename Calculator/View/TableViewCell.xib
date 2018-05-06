@@ -19,18 +19,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="392" height="98.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j3-Y7-b9W">
-                        <rect key="frame" x="0.0" y="0.0" width="382" height="98.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0j3-Y7-b9W">
+                        <rect key="frame" x="0.0" y="5" width="382" height="88.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="0j3-Y7-b9W" secondAttribute="trailing" constant="10" id="6gL-3u-DGs"/>
-                    <constraint firstItem="0j3-Y7-b9W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="A9K-WJ-azV"/>
+                    <constraint firstItem="0j3-Y7-b9W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="A9K-WJ-azV"/>
                     <constraint firstItem="0j3-Y7-b9W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="VBw-dM-Ly5"/>
-                    <constraint firstAttribute="bottom" secondItem="0j3-Y7-b9W" secondAttribute="bottom" id="hH6-fn-Qrl"/>
+                    <constraint firstAttribute="bottom" secondItem="0j3-Y7-b9W" secondAttribute="bottom" constant="5" id="hH6-fn-Qrl"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

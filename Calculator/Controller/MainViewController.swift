@@ -30,7 +30,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.tintColor = UIColor.init(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.7)
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
@@ -203,11 +203,14 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         {
             if sound
             {
-                AudioServicesPlaySystemSound(1201)
+                // 咚咚咚 拨号声
+//                AudioServicesPlaySystemSound(1201)
+                // 塔塔塔 苹果计算器按键声，键盘声
+                AudioServicesPlaySystemSound(1104)
             }
         }
         else {
-            AudioServicesPlaySystemSound(1201)
+            AudioServicesPlaySystemSound(1104)
         }
         
         if ((showLabel.text?.range(of: "=")) != nil) && indexPath.row == 18{
@@ -322,7 +325,6 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
-        return heightCell
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -336,9 +338,16 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
         self.historyData.removeObject(at: indexPath.row)
         self.historyData.write(toFile: historyPlistPath, atomically: true)
         self.tabelView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.top)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "删除"
     }
     
 }

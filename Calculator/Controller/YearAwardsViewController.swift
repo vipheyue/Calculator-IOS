@@ -18,6 +18,8 @@ class YearAwardsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//        self.resultBtn.layer.masksToBounds = true
+//        self.resultBtn.layer.cornerRadius = self.resultBtn.frame.size.height/2
     }
 
     @IBAction func touchUpInsideBtn(_ sender: UIButton) {
