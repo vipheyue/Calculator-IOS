@@ -10,9 +10,6 @@ import UIKit
 
 class ViewController: UIViewController,UIGestureRecognizerDelegate {
     
-    
-    
-    
     // 屏幕的宽，高
     let SCREEN_WIDTH = UIScreen.main.bounds.size.width
     let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
