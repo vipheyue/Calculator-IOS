@@ -54,6 +54,7 @@
 		049EF4112014A1D70076B6BE /* XUppercase.m in Sources */ = {isa = PBXBuildFile; fileRef = 049EF4102014A1D70076B6BE /* XUppercase.m */; };
 		049EF413201626780076B6BE /* CapitalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049EF412201626780076B6BE /* CapitalViewController.swift */; };
 		04BBDA2D2017775800B3ED3A /* UniExpressionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BBDA2C2017775800B3ED3A /* UniExpressionViewController.swift */; };
+		96543B6E213FA28000220014 /* SOWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96543B6D213FA28000220014 /* SOWebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,7 @@
 		049EF4102014A1D70076B6BE /* XUppercase.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XUppercase.m; sourceTree = "<group>"; };
 		049EF412201626780076B6BE /* CapitalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalViewController.swift; sourceTree = "<group>"; };
 		04BBDA2C2017775800B3ED3A /* UniExpressionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniExpressionViewController.swift; sourceTree = "<group>"; };
+		96543B6D213FA28000220014 /* SOWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SOWebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +214,7 @@
 				042EBCE9203034B900EDAC8A /* YearAwardsViewController.swift */,
 				042EBCEB203054DE00EDAC8A /* ATaxCalViewController.swift */,
 				042EBCED20305F7000EDAC8A /* MortgageViewController.swift */,
+				96543B6D213FA28000220014 /* SOWebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				041EC3C61FFA9128008962C1 /* MSExpressionHelper.m in Sources */,
 				0415B79B200B352B0063EF25 /* MenuViewController.swift in Sources */,
 				045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */,
+				96543B6E213FA28000220014 /* SOWebViewController.swift in Sources */,
 				041EC3C41FFA9128008962C1 /* MSStack.m in Sources */,
 				049EF413201626780076B6BE /* CapitalViewController.swift in Sources */,
 				041EC3CD1FFA9128008962C1 /* MSPairOperator.m in Sources */,
