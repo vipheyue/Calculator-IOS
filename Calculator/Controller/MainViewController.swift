@@ -172,6 +172,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     // 左上角按钮点击
     @objc func leftBtnEvent() {
         print("leftBtnEvent")
+        let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        self.navigationController?.pushViewController(mainVC, animated: true)
     }
     
     // 长按手势
