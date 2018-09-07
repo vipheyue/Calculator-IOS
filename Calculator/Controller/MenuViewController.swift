@@ -51,7 +51,9 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(titlesArray[indexPath.section][indexPath.row])
-        self.blockObj!()
+        if (self.blockObj != nil) {
+            self.blockObj!()
+        }
         if indexPath.section == 0 {
             switch indexPath.row {
             case 0:
@@ -86,8 +88,11 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
 //                break
             case 2:
                 // 个税计算
-                let aTaxCalVC:ATaxCalViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ATaxCalViewController") as! ATaxCalViewController
-                self.present(aTaxCalVC, animated: true, completion: nil)
+//                let aTaxCalVC:ATaxCalViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ATaxCalViewController") as! ATaxCalViewController
+//                self.present(aTaxCalVC, animated: true, completion: nil)
+                let webVC:SOWebViewController = SOWebViewController.init()
+                webVC.urlString = "https://www.rong360.com/calculator/gerensuodeshui.html"
+                self.navigationController?.pushViewController(webVC, animated: true)
                 break
 //            case 4:
 //                // 房贷计算器

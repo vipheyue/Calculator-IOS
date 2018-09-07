@@ -8,24 +8,41 @@
 
 import UIKit
 
-class SOWebViewController: UIViewController {
+class SOWebViewController: UIViewController, UIWebViewDelegate {
     
     // 屏幕的宽，高
     let SCREEN_WIDTH = UIScreen.main.bounds.size.width
     let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
+    
+    var urlString:String?
+    let myWebView = UIWebView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        let webView = UIWebView(frame:CGRect(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
+        navigationController?.isNavigationBarHidden = true
         
-        let url = NSURL(string: "http://www.baidu.com")
+        myWebView.delegate = self
         
-        webView.loadRequest(NSURLRequest(url: url! as URL) as URLRequest)
+        let url = NSURL(string: urlString!)
         
-        self.view.addSubview(webView)
+        myWebView.loadRequest(NSURLRequest(url: url! as URL) as URLRequest)
+        
+        self.view.addSubview(myWebView)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if ((request.mainDocumentURL?.relativePath.range(of: ".html")) == nil) {
+            navigationController?.popViewController(animated: true)
+        }
+        return true;
     }
 
     override func didReceiveMemoryWarning() {

@@ -35,7 +35,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
 
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-
+        
         self.loadLeftBtnView()
         
         collectionView.dataSource = self
@@ -114,6 +114,13 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
 
         self.getHistoryData()
         self.collectionView.reloadData()
+        
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
     // MARK:加载视图相关
@@ -121,7 +128,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     func loadLeftBtnView() {
         let leftBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 20, width: 50, height: 50))
         leftBtn.backgroundColor = UIColor.red
-        leftBtn.addTarget(self, action: #selector(leftBtnEvent), for: .touchUpOutside)
+        leftBtn.addTarget(self, action: #selector(leftBtnEvent(sender:)), for: .touchUpInside)
         self.view.addSubview(leftBtn)
     }
     
@@ -170,9 +177,9 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     
     // MARK:事件相关方法
     // 左上角按钮点击
-    @objc func leftBtnEvent() {
+    @objc func leftBtnEvent(sender : UITapGestureRecognizer) {
         print("leftBtnEvent")
-        let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MenuViewController") as! MenuViewController
+        let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController
         self.navigationController?.pushViewController(mainVC, animated: true)
     }
     
