@@ -140,3 +140,10 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
 }
 
+//其他计算器:https://www.rong360.com/calculator/
+//房贷:https://www.rong360.com/calculator/fangdai.html
+//最新存款利率:https://www.rong360.com/cunkuanlilv.html
+//车贷:https://www.rong360.com/calculator/quankuanmaiche.html
+//五险一金:https://www.rong360.com/calculator/wuxianyijin.html
+//年终奖:https://www.rong360.com/calculator/nianzhongjiang.html
+
