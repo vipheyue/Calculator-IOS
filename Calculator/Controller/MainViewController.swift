@@ -126,8 +126,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     // MARK:加载视图相关
     // 加载左上角按钮
     func loadLeftBtnView() {
-        let leftBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 20, width: 50, height: 50))
-        leftBtn.backgroundColor = UIColor.red
+        let leftBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 20, width: 42, height: 42))
+        leftBtn.setBackgroundImage(UIImage.init(named: "More"), for: UIControlState.normal)
         leftBtn.addTarget(self, action: #selector(leftBtnEvent(sender:)), for: .touchUpInside)
         self.view.addSubview(leftBtn)
     }
