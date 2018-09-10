@@ -27,7 +27,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     
     var themeColor:UIColor? = UIColor.init(red: 247/255.0, green: 18/255.0, blue: 188/255.0, alpha: 1)
 
-    // MARK:生命周期
+    // MARK: - 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,7 +123,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         self.navigationController?.isNavigationBarHidden = false
     }
     
-    // MARK:加载视图相关
+    // MARK: - 加载视图相关
     // 加载左上角按钮
     func loadLeftBtnView() {
         let leftBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 20, width: 42, height: 42))
@@ -132,7 +132,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         self.view.addSubview(leftBtn)
     }
     
-    // MARK:获取数据相关
+    // MARK: - 获取数据相关
     // 获取历史记录
     func getHistoryData() {
         let diaryList:String = Bundle.main.path(forResource: "Data", ofType:"plist")!
@@ -175,7 +175,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         return ""
     }
     
-    // MARK:事件相关方法
+    // MARK: - 事件相关方法
     // 左上角按钮点击
     @objc func leftBtnEvent(sender : UITapGestureRecognizer) {
         print("leftBtnEvent")
@@ -191,7 +191,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         }
     }
 
-    // MARK:collectionView相关
+    // MARK: - collectionView相关
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return (dataArray?.count)!
@@ -336,7 +336,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         return inset
     }
     
-    // MARK:tableView相关
+    // MARK: - tableView相关
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.historyData.count
     }
