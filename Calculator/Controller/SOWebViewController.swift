@@ -17,10 +17,15 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
     var urlString:String?
     let myWebView = UIWebView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     
+    // MARK: - 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+//        setStatusBarBackgroundColor(color: .black)
+        
+        navigationController?.navigationBar.barTintColor = UIColor.red
         
         navigationController?.isNavigationBarHidden = true
         
@@ -38,16 +43,23 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
         navigationController?.isNavigationBarHidden = false
     }
     
+    // MARK: - 方法相关
+    // 设置状态栏背景色
+    func setStatusBarBackgroundColor(color : UIColor) {
+        let statusBarWindow : UIView = UIApplication.shared.value(forKey: "statusBarWindow") as! UIView
+        let statusBar : UIView = statusBarWindow.value(forKey: "statusBar") as! UIView
+        if statusBar.responds(to:#selector(setter: UIView.backgroundColor)) {
+            statusBar.backgroundColor = color
+        }
+    }
+    
+    // MARK: - webView相关
+    // webView请求方法
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if ((request.mainDocumentURL?.relativePath.range(of: ".html")) == nil) {
             navigationController?.popViewController(animated: true)
         }
         return true;
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 }

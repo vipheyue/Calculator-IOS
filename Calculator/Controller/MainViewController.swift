@@ -31,10 +31,16 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.tintColor = UIColor.init(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.7)
+        // 状态栏字体颜色
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-
+        // 导航栏标题颜色
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
+        // 导航栏左右两边字体颜色
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        // 导航栏透明背景
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        // 导航栏和状态栏背景颜色
+//        self.navigationController?.navigationBar.barTintColor = UIColor.red
         
         self.loadLeftBtnView()
         
@@ -115,11 +121,15 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         self.getHistoryData()
         self.collectionView.reloadData()
         
+//        UIApplication.shared.isStatusBarHidden = true
         self.navigationController?.isNavigationBarHidden = true
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        
+//        UIApplication.shared.isStatusBarHidden = false
         self.navigationController?.isNavigationBarHidden = false
     }
     

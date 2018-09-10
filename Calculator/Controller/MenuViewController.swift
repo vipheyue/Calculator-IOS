@@ -26,7 +26,6 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
         
         self.title = "智能计算器"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         settingTableView.delegate = self
         settingTableView.dataSource = self
         settingTableView.tableFooterView = UIView()
