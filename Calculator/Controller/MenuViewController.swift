@@ -36,6 +36,9 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     func loadWebView(urlStr:String) {
         let webVC:SOWebViewController = SOWebViewController.init()
         webVC.urlString = urlStr
+        if urlStr == "https://www.rong360.com/calculator" {
+            webVC.isOtherCalculator = true
+        }
         navigationController?.pushViewController(webVC, animated: true)
     }
     

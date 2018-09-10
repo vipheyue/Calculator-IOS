@@ -15,6 +15,8 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
     let SCREEN_HEIGHT = UIScreen.main.bounds.size.height
     
     var urlString:String?
+    var isOtherCalculator:Bool = false
+    
     let myWebView = UIWebView(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     
     // MARK: - 生命周期
@@ -56,8 +58,11 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
     // MARK: - webView相关
     // webView请求方法
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if ((request.mainDocumentURL?.relativePath.range(of: ".html")) == nil) {
+        if (!isOtherCalculator && (request.mainDocumentURL?.relativePath.range(of: ".html")) == nil) {
             navigationController?.popViewController(animated: true)
+        }
+        if (isOtherCalculator && (request.mainDocumentURL?.relativePath.range(of: "https://m.rong360.com/calculator/")) != nil) {
+            isOtherCalculator = false
         }
         return true;
     }
