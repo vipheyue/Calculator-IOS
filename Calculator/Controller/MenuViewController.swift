@@ -13,7 +13,8 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     @IBOutlet weak var settingTableView: UITableView!
     
 //    let titlesArray = [["换肤", "声音", "年终奖", "个税计算", "房贷计算器", "万能表达式", "大写人民币", "清理历史记录"],["意见反馈"]]
-    let titlesArray = [["换肤", "声音", "个税计算", "大写人民币", "清理历史记录"],["意见反馈"]]
+//    let titlesArray = [["换肤", "声音", "个税计算", "大写人民币", "清理历史记录"],["意见反馈"]]
+    let titlesArray = [["日常计算器", "个税计算器", "税后计算器", "年终奖", "房贷计算器", "车贷计算器", "其他计算器", "最新存款利率", "大写人民币", "换肤", "开/关 音效", "清理历史记录", "分享"],["意见反馈"]]
     let heightCell:CGFloat = 50
     
     typealias blockObject = () -> ()
@@ -23,6 +24,8 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "智能计算器"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         settingTableView.delegate = self
         settingTableView.dataSource = self
         settingTableView.tableFooterView = UIView()
