@@ -27,8 +27,6 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
         
 //        setStatusBarBackgroundColor(color: .black)
         
-        navigationController?.navigationBar.barTintColor = UIColor.red
-        
         navigationController?.isNavigationBarHidden = true
         
         myWebView.delegate = self

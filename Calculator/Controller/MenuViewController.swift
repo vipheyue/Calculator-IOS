@@ -104,6 +104,7 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
         }
         else if selectStr == "分享" {
             // TODO: - 暂未完成
+            XMessageView.messageShow("敬请期待")
         }
         else if selectStr == "意见反馈" {
             let alertViewController = UIAlertController(title: "联系方式", message: "邮箱:rumengjijiang@foxmail.com\nQQ群号:469859289", preferredStyle: .alert)
