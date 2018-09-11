@@ -58,10 +58,10 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
     // MARK: - webView相关
     // webView请求方法
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if (!isOtherCalculator && (request.mainDocumentURL?.relativePath.range(of: ".html")) == nil) {
+        if (!isOtherCalculator && (request.mainDocumentURL?.relativeString.range(of: ".html")) == nil) {
             navigationController?.popViewController(animated: true)
         }
-        if (isOtherCalculator && (request.mainDocumentURL?.relativePath.range(of: "https://m.rong360.com/calculator/")) != nil) {
+        if (isOtherCalculator && (request.mainDocumentURL?.relativeString.range(of: "https://m.rong360.com/calculator/")) != nil) {
             isOtherCalculator = false
         }
         return true;
