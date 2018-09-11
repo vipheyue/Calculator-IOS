@@ -8,6 +8,7 @@
 
 import UIKit
 import AudioToolbox
+import StoreKit
 
 class MainViewController: UIViewController, UICollectionViewDataSource,  UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
 
@@ -144,25 +145,51 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     
     // 加载弹窗视图
     func loadAlertView() {
-        let alertController = UIAlertController(title: "觉得好用的话，给我个评价吧！",
+        var titleStr = "家境贫寒,靠写代码为生,软件无广告无盈利,只求5星鼓励"
+        if UserDefaults.standard.bool(forKey: "GOTOMENU") {
+            titleStr = "请书写评论，如果不想书写，返回即可，只求鼓励"
+        }
+        let alertController = UIAlertController(title: titleStr,
                                                 message: nil, preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "暂不评价", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "好的", style: .default,
+//        let cancelAction = UIAlertAction(title: "暂不评价", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "去评价", style: .default,
                                      handler: {
                                         action in
-                                        self.gotoAppStore()
+                                        self.storeReview()
         })
-        alertController.addAction(cancelAction)
+//        if UserDefaults.standard.bool(forKey: "GOTOMENU") {
+//            alertController.addAction(cancelAction)
+//        }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
     }
     
-    //跳转到应用的AppStore页页面
+    // 跳转到应用的AppStore页页面
     func gotoAppStore() {
-        UserDefaults.standard.set(true, forKey: "GOTOAPPSTORE")
-        let urlString = "itms-apps://itunes.apple.com/app/id1352912463"
+        
+        let urlString = "itms-apps://itunes.apple.com/app/id1352912463?action=write-review"
         let url = NSURL(string: urlString)
-        UIApplication.shared.openURL(url! as URL)
+        let success = UIApplication.shared.openURL(url! as URL)
+        if success {
+            UserDefaults.standard.set(true, forKey: "GOTOAPPSTORE")
+        }
+    }
+    
+    // 应用内评分
+    func storeReview() {
+        if #available(iOS 10.3, *) {
+            
+            if !UserDefaults.standard.bool(forKey: "GOTOMENU"){
+                SKStoreReviewController.requestReview()
+                UserDefaults.standard.set(true, forKey: "GOTOAPPSTORE")
+            }
+            else {
+                gotoAppStore()
+            }
+        } else {
+            // Fallback on earlier versions
+            gotoAppStore()
+        }
     }
     
     // MARK: - 获取数据相关
@@ -212,16 +239,18 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     // 左上角按钮点击
     @objc func leftBtnEvent() {
         print("leftBtnEvent")
-        let userDef = UserDefaults.standard.bool(forKey: "GOTOAPPSTORE")
-        if userDef
+        if UserDefaults.standard.bool(forKey: "GOTOAPPSTORE")
         {
             let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController
             self.navigationController?.pushViewController(mainVC, animated: true)
+            if !UserDefaults.standard.bool(forKey: "GOTOMENU") {
+                UserDefaults.standard.set(false, forKey: "GOTOAPPSTORE")
+                UserDefaults.standard.set(true, forKey: "GOTOMENU")
+            }
         }
         else {
             loadAlertView()
         }
-        
     }
     
     // 长按手势
