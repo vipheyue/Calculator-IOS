@@ -138,8 +138,31 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     func loadLeftBtnView() {
         let leftBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 20, width: 42, height: 42))
         leftBtn.setBackgroundImage(UIImage.init(named: "More"), for: UIControlState.normal)
-        leftBtn.addTarget(self, action: #selector(leftBtnEvent(sender:)), for: .touchUpInside)
+        leftBtn.addTarget(self, action: #selector(leftBtnEvent), for: .touchUpInside)
         self.view.addSubview(leftBtn)
+    }
+    
+    // 加载弹窗视图
+    func loadAlertView() {
+        let alertController = UIAlertController(title: "觉得好用的话，给我个评价吧！",
+                                                message: nil, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "暂不评价", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "好的", style: .default,
+                                     handler: {
+                                        action in
+                                        self.gotoAppStore()
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    //跳转到应用的AppStore页页面
+    func gotoAppStore() {
+        UserDefaults.standard.set(true, forKey: "GOTOAPPSTORE")
+        let urlString = "itms-apps://itunes.apple.com/app/id1352912463"
+        let url = NSURL(string: urlString)
+        UIApplication.shared.openURL(url! as URL)
     }
     
     // MARK: - 获取数据相关
@@ -187,10 +210,18 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     
     // MARK: - 事件相关方法
     // 左上角按钮点击
-    @objc func leftBtnEvent(sender : UITapGestureRecognizer) {
+    @objc func leftBtnEvent() {
         print("leftBtnEvent")
-        let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController
-        self.navigationController?.pushViewController(mainVC, animated: true)
+        let userDef = UserDefaults.standard.bool(forKey: "GOTOAPPSTORE")
+        if userDef
+        {
+            let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController
+            self.navigationController?.pushViewController(mainVC, animated: true)
+        }
+        else {
+            loadAlertView()
+        }
+        
     }
     
     // 长按手势
