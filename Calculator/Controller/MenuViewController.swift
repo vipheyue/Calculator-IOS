@@ -15,7 +15,9 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
 //    let titlesArray = [["换肤", "声音", "年终奖", "个税计算", "房贷计算器", "万能表达式", "大写人民币", "清理历史记录"],["意见反馈"]]
 //    let titlesArray = [["换肤", "声音", "个税计算", "大写人民币", "清理历史记录"],["意见反馈"]]
     let titlesArray = [["日常计算器", "个税计算器", "税后计算器", "房贷计算器", "车贷计算器", "其他计算器", "年终奖", "大写人民币", "最新存款利率"],["换肤", "分享", "意见反馈", "开/关 音效", "清理历史记录"]]
+    
     let heightCell:CGFloat = 50
+    let heightHeader:CGFloat = 40
     
     typealias blockObject = () -> ()
     var blockObj:blockObject?
@@ -137,12 +139,31 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
             XMessageView.messageShow("清除成功")
         }
     }
-
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 1 {
-            return "智能剪切板，复制后自动识别"
+            return heightHeader
         }
-        return ""
+        return 0
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: heightHeader))
+            let titleStr = UILabel.init(frame: CGRect(x: 25, y: 0, width: tableView.bounds.size.width, height: heightHeader))
+            titleStr.textColor = UIColor.init(red: 46/255.0, green: 178/255.0, blue: 151/255.0, alpha: 1)
+            titleStr.text = "智能剪切板，复制后自动识别"
+            headerView.addSubview(titleStr)
+            return headerView
+        }
+        return UIView.init()
+    }
+
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        if section == 1 {
+//            return "智能剪切板，复制后自动识别"
+//        }
+//        return ""
+//    }
 }
 
