@@ -239,6 +239,11 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     // 左上角按钮点击
     @objc func leftBtnEvent() {
         print("leftBtnEvent")
+        if XTimer.compareNowTime("2018-09-15 23:00:00") {
+            let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController
+            self.navigationController?.pushViewController(mainVC, animated: true)
+            return
+        }
         if UserDefaults.standard.bool(forKey: "GOTOAPPSTORE")
         {
             let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController

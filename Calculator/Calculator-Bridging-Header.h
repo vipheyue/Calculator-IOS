@@ -15,5 +15,6 @@
 #import "XColorPickerView.h"
 #import "ThemeColorViewController.h"
 #import <Bugly/Bugly.h>
+#import "XTimer.h"
 
 #endif /* Calculator_Bridging_Header_h */

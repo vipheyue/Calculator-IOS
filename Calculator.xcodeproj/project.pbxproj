@@ -32,6 +32,7 @@
 		042EBCEA203034B900EDAC8A /* YearAwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EBCE9203034B900EDAC8A /* YearAwardsViewController.swift */; };
 		042EBCEC203054DE00EDAC8A /* ATaxCalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EBCEB203054DE00EDAC8A /* ATaxCalViewController.swift */; };
 		042EBCEE20305F7000EDAC8A /* MortgageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042EBCED20305F7000EDAC8A /* MortgageViewController.swift */; };
+		0435D17B21493F2C004703C3 /* XTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0435D17921493F2C004703C3 /* XTimer.m */; };
 		045722D21FEFA9FE00E9EA7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */; };
 		045722D71FEFA9FE00E9EA7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045722D51FEFA9FE00E9EA7A /* Main.storyboard */; };
 		045722D91FEFA9FE00E9EA7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045722D81FEFA9FE00E9EA7A /* Assets.xcassets */; };
@@ -115,6 +116,8 @@
 		042EBCE9203034B900EDAC8A /* YearAwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YearAwardsViewController.swift; sourceTree = "<group>"; };
 		042EBCEB203054DE00EDAC8A /* ATaxCalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATaxCalViewController.swift; sourceTree = "<group>"; };
 		042EBCED20305F7000EDAC8A /* MortgageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MortgageViewController.swift; sourceTree = "<group>"; };
+		0435D17921493F2C004703C3 /* XTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XTimer.m; sourceTree = "<group>"; };
+		0435D17A21493F2C004703C3 /* XTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XTimer.h; sourceTree = "<group>"; };
 		045722CE1FEFA9FE00E9EA7A /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045722D11FEFA9FE00E9EA7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045722D61FEFA9FE00E9EA7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -223,6 +226,8 @@
 				049EF4102014A1D70076B6BE /* XUppercase.m */,
 				04887846201F5A5D00AC8C4B /* XColorPickerView.h */,
 				04887845201F5A5D00AC8C4B /* XColorPickerView.mm */,
+				0435D17A21493F2C004703C3 /* XTimer.h */,
+				0435D17921493F2C004703C3 /* XTimer.m */,
 			);
 			path = WidgetOC;
 			sourceTree = "<group>";
@@ -522,6 +527,7 @@
 				041EC3C61FFA9128008962C1 /* MSExpressionHelper.m in Sources */,
 				0415B79B200B352B0063EF25 /* MenuViewController.swift in Sources */,
 				045723001FEFC4CE00E9EA7A /* CollectionViewCell.swift in Sources */,
+				0435D17B21493F2C004703C3 /* XTimer.m in Sources */,
 				96543B6E213FA28000220014 /* SOWebViewController.swift in Sources */,
 				041EC3C41FFA9128008962C1 /* MSStack.m in Sources */,
 				049EF413201626780076B6BE /* CapitalViewController.swift in Sources */,
