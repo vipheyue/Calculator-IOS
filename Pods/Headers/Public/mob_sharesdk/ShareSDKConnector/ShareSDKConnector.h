@@ -1,0 +1,1 @@
+../../../../mob_sharesdk/SDK/ShareSDK/Support/Required/ShareSDKConnector.framework/Headers/ShareSDKConnector.h

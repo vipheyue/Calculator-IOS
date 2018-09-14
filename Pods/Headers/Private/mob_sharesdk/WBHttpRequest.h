@@ -1,0 +1,1 @@
+../../../mob_sharesdk/SDK/ShareSDK/Support/PlatformSDK/SinaWeiboSDK/WBHttpRequest.h
