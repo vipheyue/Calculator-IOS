@@ -138,7 +138,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     // 加载左上角按钮
     func loadLeftBtnView() {
         let leftBtn:UIButton = UIButton(frame: CGRect(x: 20, y: 20, width: 42, height: 42))
-        leftBtn.setBackgroundImage(UIImage.init(named: "More"), for: UIControlState.normal)
+        leftBtn.setBackgroundImage(UIImage.init(named: "menu"), for: UIControlState.normal)
         leftBtn.addTarget(self, action: #selector(leftBtnEvent), for: .touchUpInside)
         self.view.addSubview(leftBtn)
     }
