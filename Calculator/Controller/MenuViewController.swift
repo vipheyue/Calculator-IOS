@@ -44,6 +44,50 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
         navigationController?.pushViewController(webVC, animated: true)
     }
     
+    // 分享
+    func loadShare() {
+//        // 1.创建分享参数
+//        let shareParames = NSMutableDictionary()
+//        shareParames.ssdkSetupShareParams(byText: "分享内容",
+//                                          images : UIImage(named: "More"),
+//                                          url : NSURL(string:"http://mob.com") as URL!,
+//                                          title : "分享标题",
+//                                          type : SSDKContentType.image)
+//
+//        //2.进行分享
+//        ShareSDK.share(SSDKPlatformType.typeSinaWeibo, parameters: shareParames) { (state : SSDKResponseState, nil, entity : SSDKContentEntity?, error :Error?) in
+//
+//            switch state{
+//
+//            case SSDKResponseState.success: print("分享成功")
+//            case SSDKResponseState.fail:    print("授权失败,错误描述:\(error)")
+//            case SSDKResponseState.cancel:  print("操作取消")
+//
+//            default:
+//                break
+//            }
+//
+//        }
+        let textToShare = "百度"
+        let imageToShare = UIImage.init(named: "More")
+        let urlToShare = NSURL.init(string: "http://www.baidu.com")
+        let items = [textToShare,imageToShare ?? "WeShare",urlToShare ?? "WeShare"] as [Any]
+        let activityVC = UIActivityViewController(
+            activityItems: items,
+            applicationActivities: nil)
+        activityVC.completionWithItemsHandler =  { activity, success, items, error in
+            print(activity ?? "1111")
+            print(success)
+            print(items ?? "2222")
+            print(error ?? "3333")
+            
+            
+        }
+        self.present(activityVC, animated: true, completion: { () -> Void in
+            
+        })
+    }
+    
     // MARK: - tableview相关
     func numberOfSections(in tableView: UITableView) -> Int {
         return titlesArray.count
@@ -107,6 +151,7 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
         else if selectStr == "分享" {
             // TODO: - 暂未完成
             XMessageView.messageShow("敬请期待")
+            loadShare()
         }
         else if selectStr == "意见反馈" {
             let alertViewController = UIAlertController(title: "联系方式", message: "邮箱:rumengjijiang@foxmail.com\nQQ群号:469859289", preferredStyle: .alert)
