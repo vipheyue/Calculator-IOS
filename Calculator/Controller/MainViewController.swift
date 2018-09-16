@@ -239,7 +239,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     // 左上角按钮点击
     @objc func leftBtnEvent() {
         print("leftBtnEvent")
-        if XTimer.compareNowTime("2018-09-15 23:00:00") {
+        if XTimer.compareNowTime("2018-09-21 23:00:00") {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .plain, target: self, action: nil)
             let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController
             self.navigationController?.pushViewController(mainVC, animated: true)
@@ -396,13 +396,13 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         let cellWidth:CGFloat = self.view.frame.size.width
         let cellHeight:CGFloat = self.view.frame.size.height
         if indexPath.row == 16 {
-            return CGSize(width: cellWidth/2-1, height: cellHeight*0.6/5)
+            return CGSize(width: cellWidth/2-0.5, height: cellHeight*0.6/5)
         }
-        return CGSize(width: (cellWidth-5)/4, height: cellHeight*0.6/5)
+        return CGSize(width: (cellWidth-3)/4, height: cellHeight*0.6/5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: inset, left: inset/2, bottom: inset, right: inset/2)
+        return UIEdgeInsets(top: inset, left: 0, bottom: inset, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
