@@ -25,8 +25,8 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
 
         // Do any additional setup after loading the view.
         
-//        setStatusBarBackgroundColor(color: .black)
-        
+        setStatusBarBackgroundColor(color: .black)
+
         navigationController?.isNavigationBarHidden = true
         
         myWebView.delegate = self
@@ -41,6 +41,7 @@ class SOWebViewController: UIViewController, UIWebViewDelegate {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
+        setStatusBarBackgroundColor(color: .clear)
     }
     
     // MARK: - 方法相关

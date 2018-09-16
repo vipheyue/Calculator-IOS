@@ -26,7 +26,7 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     // MARK: - 生命周期
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = "智能计算器"
         settingTableView.delegate = self
         settingTableView.dataSource = self

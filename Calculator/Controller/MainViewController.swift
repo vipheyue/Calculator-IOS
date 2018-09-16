@@ -41,7 +41,8 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         // 导航栏透明背景
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         // 导航栏和状态栏背景颜色
-        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 46/255.0, green: 178/255.0, blue: 151/255.0, alpha: 1)
+//        self.navigationController?.navigationBar.barTintColor = UIColor.init(red: 46/255.0, green: 178/255.0, blue: 151/255.0, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
         
         self.loadLeftBtnView()
         
