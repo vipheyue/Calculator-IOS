@@ -46,10 +46,10 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     // 分享
     func loadShare() {
-        let textToShare = "百度"
-        let imageToShare = UIImage.init(named: "More")
-        let urlToShare = NSURL.init(string: "http://www.baidu.com")
-        let items = [textToShare,imageToShare ?? "WeShare",urlToShare ?? "WeShare"] as [Any]
+        let textToShare = "智能计算器"
+        let imageToShare = UIImage.init(named: "Logo")
+        let urlToShare = NSURL.init(string: "https://itunes.apple.com/cn/app/%E6%99%BA%E8%83%BD%E8%AE%A1%E7%AE%97%E5%99%A8-%E7%BA%AF%E5%87%80%E6%B8%85%E7%88%BD%E5%B9%B6%E5%B8%A6%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95%E7%9A%84%E8%AE%A1%E7%AE%97%E5%99%A8/id1352912463?mt=8")
+        let items = [textToShare,imageToShare ?? "Logo",urlToShare ?? "Logo"] as [Any]
         let activityVC = UIActivityViewController(
             activityItems: items,
             applicationActivities: nil)
