@@ -160,17 +160,20 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return heightHeader
-        }
+//        if section == 1 {
+//            return heightHeader
+//        }
         return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 1 {
             let headerView = UIView.init(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: heightHeader))
-            let titleStr = UILabel.init(frame: CGRect(x: 25, y: 0, width: tableView.bounds.size.width, height: heightHeader))
-            titleStr.textColor = UIColor.init(red: 46/255.0, green: 178/255.0, blue: 151/255.0, alpha: 1)
+            headerView.backgroundColor = UIColor.lightGray
+            let titleStr = UILabel.init(frame: CGRect(x: 20, y: 0, width: tableView.bounds.size.width, height: heightHeader))
+            titleStr.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight(rawValue: 10))
+//            titleStr.textColor = UIColor.init(red: 46/255.0, green: 178/255.0, blue: 151/255.0, alpha: 1)
+            titleStr.textColor = UIColor.black
             titleStr.text = "智能剪切板，复制后自动识别"
             headerView.addSubview(titleStr)
             return headerView
