@@ -122,7 +122,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
         self.getHistoryData()
         self.collectionView.reloadData()
         
-//        UIApplication.shared.isStatusBarHidden = true
+        UIApplication.shared.isStatusBarHidden = true
         self.navigationController?.isNavigationBarHidden = true
         
     }
@@ -130,7 +130,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     override func viewWillDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-//        UIApplication.shared.isStatusBarHidden = false
+        UIApplication.shared.isStatusBarHidden = false
         self.navigationController?.isNavigationBarHidden = false
     }
     
