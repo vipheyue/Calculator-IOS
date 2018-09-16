@@ -46,28 +46,6 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
     
     // 分享
     func loadShare() {
-//        // 1.创建分享参数
-//        let shareParames = NSMutableDictionary()
-//        shareParames.ssdkSetupShareParams(byText: "分享内容",
-//                                          images : UIImage(named: "More"),
-//                                          url : NSURL(string:"http://mob.com") as URL!,
-//                                          title : "分享标题",
-//                                          type : SSDKContentType.image)
-//
-//        //2.进行分享
-//        ShareSDK.share(SSDKPlatformType.typeSinaWeibo, parameters: shareParames) { (state : SSDKResponseState, nil, entity : SSDKContentEntity?, error :Error?) in
-//
-//            switch state{
-//
-//            case SSDKResponseState.success: print("分享成功")
-//            case SSDKResponseState.fail:    print("授权失败,错误描述:\(error)")
-//            case SSDKResponseState.cancel:  print("操作取消")
-//
-//            default:
-//                break
-//            }
-//
-//        }
         let textToShare = "百度"
         let imageToShare = UIImage.init(named: "More")
         let urlToShare = NSURL.init(string: "http://www.baidu.com")
@@ -80,8 +58,6 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
             print(success)
             print(items ?? "2222")
             print(error ?? "3333")
-            
-            
         }
         self.present(activityVC, animated: true, completion: { () -> Void in
             
@@ -149,8 +125,6 @@ class MenuViewController: UIViewController , UITableViewDelegate, UITableViewDat
             navigationController?.pushViewController(themeColorVC, animated: true)
         }
         else if selectStr == "分享" {
-            // TODO: - 暂未完成
-            XMessageView.messageShow("敬请期待")
             loadShare()
         }
         else if selectStr == "意见反馈" {
