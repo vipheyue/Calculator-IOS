@@ -240,7 +240,7 @@ class MainViewController: UIViewController, UICollectionViewDataSource,  UIColle
     // 左上角按钮点击
     @objc func leftBtnEvent() {
         print("leftBtnEvent")
-        if XTimer.compareNowTime("2018-09-21 23:00:00") {
+        if XTimer.compareNowTime("2018-09-23 23:00:00") {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "返回", style: .plain, target: self, action: nil)
             let mainVC:MenuViewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "menuView") as! MenuViewController
             self.navigationController?.pushViewController(mainVC, animated: true)
