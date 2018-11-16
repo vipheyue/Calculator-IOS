@@ -201,7 +201,11 @@ typedef enum EnumCharType{
         [splitedArr addObject:curString];
         return splitedArr;
     }
-    [string enumerateSubstringsInRange:NSMakeRange(firstLen, string.length) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
+    // 如果长度等于2，则字符串可能是表情符号。
+    if (firstLen == 2) {
+        return splitedArr;
+    }
+    [string enumerateSubstringsInRange:NSMakeRange(firstLen, string.length-1) options:NSStringEnumerationByComposedCharacterSequences usingBlock:^(NSString * _Nullable substring, NSRange substringRange, NSRange enclosingRange, BOOL * _Nonnull stop) {
         
         if([checkNumber evaluateWithObject:substring]){
             if(lastType == EnumCharTypeNumber){
